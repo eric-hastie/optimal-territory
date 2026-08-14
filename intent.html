@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Public intent signals</title>
+<style>
+:root{--ground:#f6f7f9;--surface:#fff;--sunk:#eef1f5;--ink:#12161c;--body:#39424e;
+ --muted:#6b7684;--line:#dee3ea;--accent:#23408f;--a:#0e7c66;--b:#8c4a2f;
+ --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--ground:#0c0f14;--surface:#151a21;
+ --sunk:#1b222b;--ink:#e9edf3;--body:#bdc6d2;--muted:#8894a3;--line:#262e38;--accent:#7f9dff;
+ --a:#46c6a6;--b:#e0906b}}
+:root[data-theme=dark]{--ground:#0c0f14;--surface:#151a21;--sunk:#1b222b;--ink:#e9edf3;
+ --body:#bdc6d2;--muted:#8894a3;--line:#262e38;--accent:#7f9dff;--a:#46c6a6;--b:#e0906b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--body);font:15px/1.6 var(--sans);
+ -webkit-font-smoothing:antialiased}
+.page{max-width:1280px;margin:0 auto;padding:0 22px 70px}
+header{padding:46px 0 22px}
+.back{font:600 12.5px var(--mono);color:var(--muted);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--accent)}
+.tag{display:inline-block;font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;
+ padding:4px 9px;border-radius:6px;background:var(--sunk);color:var(--muted);margin:18px 0 12px}
+.tag.a{color:var(--a)} .tag.b{color:var(--b)}
+h1{font-size:34px;line-height:1.1;letter-spacing:-.022em;color:var(--ink);margin:0 0 14px;
+ font-weight:670;text-wrap:balance}
+.lede{font-size:16.5px;color:var(--muted);max-width:70ch;margin:0}
+.reading{margin:22px 0 0;padding:14px 17px;background:var(--sunk);border:1px solid var(--line);
+ border-radius:11px;font-size:14px;max-width:88ch}
+.ctrl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:22px 0 10px}
+input{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;
+ padding:7px 11px;font-size:13.5px;min-width:210px}
+.cnt{font:600 12px var(--mono);color:var(--muted)}
+.wrap{overflow:auto;max-height:72vh;border:1px solid var(--line);border-radius:12px;
+ background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{position:sticky;top:0;background:var(--sunk);z-index:3;cursor:pointer;white-space:nowrap;
+ font:600 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+tbody tr:hover{background:var(--sunk)}
+td.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:12.5px}
+td.score{color:var(--ink);font-weight:700}
+td.why{color:var(--muted);max-width:330px;font-size:12.5px}
+.blank{color:var(--muted);opacity:.5}
+.hd{position:relative;display:inline-flex;align-items:center;gap:5px}
+.q{font-style:normal;font-size:9.5px;border:1px solid var(--line);border-radius:50%;width:14px;
+ height:14px;display:inline-flex;align-items:center;justify-content:center}
+.pop{display:none;position:absolute;top:20px;left:0;width:330px;background:var(--surface);
+ border:1px solid var(--line);border-radius:10px;padding:13px;z-index:9;white-space:normal;
+ font:400 12.5px/1.5 var(--sans);text-transform:none;letter-spacing:0;color:var(--body);
+ box-shadow:0 10px 30px rgba(0,0,0,.16)}
+.hd:hover .pop{display:block}
+.pop b{display:block;margin-bottom:6px;color:var(--ink);font-size:13.5px}
+.pop span{display:block;margin-top:7px;color:var(--muted)}
+.pop .c{color:var(--ink)}
+footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);
+ font-size:12.5px;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+</style></head><body>
+<div class="page">
+<header>
+  <a class="back" href="index.html">&larr; Territory plan</a>
+  <span class="tag ">Intent</span>
+  <h1>Public intent signals</h1>
+  <p class="lede">Twenty-five companies whose own repositories are their product, which makes the review bottleneck countable from outside: how long a change waits for its first review, how much of the reviewing two people carry, and what merges with no human review at all.</p>
+  <div class="reading"><strong>Reading this list.</strong> This is intent measured in a company's own activity rather than inferred. A reviewer already installed is a positive signal: budget and intent exist, and the conversation starts from a comparison. Hover any column heading for
+  what it is, how it was collected, and how to read it.</div>
+</header>
+<div class="ctrl">
+  <input id="q" type="search" placeholder="Search company...">
+  <span class="cnt" id="cnt"></span>
+  <span class="cnt">25 accounts &middot; built 2026-08-14</span>
+</div>
+<div class="wrap"><table id="t"><thead><tr><th><span class="hd">Company<i class="q">?</i><span class="pop"><b>Company</b><span class="w">Canonical company name, with the sub-line showing what they do or the seed account they were matched from.</span><span class="h"><em>How:</em> Entities are collapsed by normalised name and bound by DOMAIN, never by name alone. &#x27;Dapta&#x27; and &#x27;Dapta (CUSTOMER)&#x27; are one row.</span><span class="c"><em>Read it as:</em> One search for &#x27;Chorus&#x27; once returned eleven different companies. If a domain is missing, treat the identity as unconfirmed.</span></span></span></th><th><span class="hd">Bottleneck<i class="q">?</i><span class="pop"><b>Bottleneck</b><span class="w">A composite of how constrained the review process looks right now.</span><span class="h"><em>How:</em> Combines time to first review, reviewer concentration, unreviewed merges, self-merges, large pull requests and the stale backlog, each scored against observed ranges.</span><span class="c"><em>Read it as:</em> Measured on public repositories, so it describes the code we can see. It is strongest where a company&#x27;s repositories are its product.</span></span></span></th><th><span class="hd">Time to first review<i class="q">?</i><span class="pop"><b>Time to first review</b><span class="w">Median hours between a pull request opening and the first human review.</span><span class="h"><em>How:</em> Computed from public pull request timelines.</span><span class="c"><em>Read it as:</em> Long latency is the bottleneck becoming visible. Very short latency can mean a healthy team or an automated approval, so read it next to reviewer concentration.</span></span></span></th><th><span class="hd">Top-2 reviewers<i class="q">?</i><span class="pop"><b>Top-2 reviewers</b><span class="w">Share of all reviews carried by the two most active reviewers.</span><span class="h"><em>How:</em> Counted across the analysed pull requests.</span><span class="c"><em>Read it as:</em> This is the serialization point measured directly. A high share means the review capacity of an entire team rests on two people.</span></span></span></th><th><span class="hd">Merged unreviewed<i class="q">?</i><span class="pop"><b>Merged unreviewed</b><span class="w">Share of merged pull requests that received no human review at all.</span><span class="h"><em>How:</em> Counted across the analysed pull requests.</span><span class="c"><em>Read it as:</em> Read this next to the incumbent reviewer column. With a review bot installed it can mean the work is already covered; without one it is the purest form of the bottleneck.</span></span></span></th><th><span class="hd">Stale PRs<i class="q">?</i><span class="pop"><b>Stale PRs</b><span class="w">Open pull requests older than thirty days.</span><span class="h"><em>How:</em> Counted at collection time from the public repositories.</span><span class="c"><em>Read it as:</em> The backlog made visible. Large open-source projects carry stale community contributions that are not the same as internal work stalling.</span></span></span></th><th><span class="hd">PRs read<i class="q">?</i><span class="pop"><b>PRs read</b><span class="w">How many pull requests were analysed to produce this row&#x27;s signals.</span><span class="h"><em>How:</em> Collected from the company&#x27;s public repositories through the GitHub API.</span><span class="c"><em>Read it as:</em> A larger sample makes the derived percentages steadier. Rows with small samples should be read as directional.</span></span></span></th><th><span class="hd">Reviewer installed<i class="q">?</i><span class="pop"><b>Reviewer installed</b><span class="w">Which automated code reviewer is already running in the repositories.</span><span class="h"><em>How:</em> Identified from review activity on pull requests, and only counted when the tool is running at real volume and recently.</span><span class="c"><em>Read it as:</em> An installed reviewer is a positive signal: it means budget and intent already exist in the category, and the conversation starts from a comparison rather than an explanation.</span></span></span></th></tr></thead><tbody><tr><td>Evidently</td><td class="num score">62</td><td class="num">118.1h</td><td class="num">80%</td><td class="num">96%</td><td class="num">59</td><td class="num">349</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Papermark</td><td class="num score">55</td><td class="num">16.9h</td><td class="num">100%</td><td class="num">98%</td><td class="num">100</td><td class="num">302</td><td>coderabbitai</td></tr>
+<tr><td>Helicone</td><td class="num score">54</td><td class="num">0.4h</td><td class="num">95%</td><td class="num">72%</td><td class="num">94</td><td class="num">373</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Medusa</td><td class="num score">53</td><td class="num">4.4h</td><td class="num">71%</td><td class="num">79%</td><td class="num">57</td><td class="num">503</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Prisma</td><td class="num score">48</td><td class="num">2.9h</td><td class="num">32%</td><td class="num">71%</td><td class="num">342</td><td class="num">700</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Weaviate</td><td class="num score">48</td><td class="num">22.6h</td><td class="num">38%</td><td class="num">72%</td><td class="num">287</td><td class="num">600</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Zulip</td><td class="num score">41</td><td class="num">53.9h</td><td class="num">46%</td><td class="num">55%</td><td class="num">659</td><td class="num">900</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Typesense</td><td class="num score">40</td><td class="num">15.0h</td><td class="num">92%</td><td class="num">26%</td><td class="num">225</td><td class="num">980</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>SurrealDB</td><td class="num score">40</td><td class="num">2.1h</td><td class="num">56%</td><td class="num">46%</td><td class="num">243</td><td class="num">600</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>PostHog</td><td class="num score">39</td><td class="num">2.4h</td><td class="num">24%</td><td class="num">27%</td><td class="num">476</td><td class="num">700</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Bun</td><td class="num score">38</td><td class="num">18.0h</td><td class="num">57%</td><td class="num">75%</td><td class="num">195</td><td class="num">271</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Val Town</td><td class="num score">35</td><td class="num">3.4h</td><td class="num">64%</td><td class="num">80%</td><td class="num">30</td><td class="num">712</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Depot</td><td class="num score">35</td><td class="num">1.5h</td><td class="num">63%</td><td class="num">42%</td><td class="num">111</td><td class="num">610</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Arize</td><td class="num score">34</td><td class="num">1.0h</td><td class="num">49%</td><td class="num">41%</td><td class="num">113</td><td class="num">704</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Biome</td><td class="num score">34</td><td class="num">3.5h</td><td class="num">55%</td><td class="num">66%</td><td class="num">140</td><td class="num">1100</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Ollama</td><td class="num score">33</td><td class="num">14.4h</td><td class="num">48%</td><td class="num">29%</td><td class="num">186</td><td class="num">684</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>ClickHouse</td><td class="num score">33</td><td class="num">4.9h</td><td class="num">47%</td><td class="num">37%</td><td class="num">409</td><td class="num">800</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Neon</td><td class="num score">33</td><td class="num">4.8h</td><td class="num">25%</td><td class="num">14%</td><td class="num">880</td><td class="num">800</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Temporal</td><td class="num score">33</td><td class="num">17.8h</td><td class="num">25%</td><td class="num">6%</td><td class="num">739</td><td class="num">700</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Inngest</td><td class="num score">33</td><td class="num">2.0h</td><td class="num">27%</td><td class="num">7%</td><td class="num">354</td><td class="num">900</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Baseten</td><td class="num score">33</td><td class="num">0.7h</td><td class="num">19%</td><td class="num">16%</td><td class="num">175</td><td class="num">480</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Documenso</td><td class="num score">32</td><td class="num">2.7h</td><td class="num">86%</td><td class="num">4%</td><td class="num">71</td><td class="num">323</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Sentry</td><td class="num score">32</td><td class="num">1.1h</td><td class="num">24%</td><td class="num">4%</td><td class="num">552</td><td class="num">900</td><td>cursor</td></tr>
+<tr><td>n8n</td><td class="num score">32</td><td class="num">3.9h</td><td class="num">42%</td><td class="num">44%</td><td class="num">179</td><td class="num">637</td><td><span class="blank">&middot;</span></td></tr>
+<tr><td>Appwrite</td><td class="num score">32</td><td class="num">0.7h</td><td class="num">30%</td><td class="num">34%</td><td class="num">461</td><td class="num">900</td><td>greptile</td></tr></tbody></table></div>
+<footer><span>Prepared by Eric Hastie</span><span>Sorted by any column. Click a heading.</span></footer>
+</div>
+<script>
+const tb=document.querySelector('#t tbody'), rows=[...tb.rows];
+function apply(){
+  const q=document.getElementById('q').value.toLowerCase(); let n=0;
+  rows.forEach(r=>{const ok=!q||r.cells[0].textContent.toLowerCase().includes(q);
+    r.style.display=ok?'':'none'; if(ok)n++;});
+  document.getElementById('cnt').textContent=n+' shown';
+}
+document.getElementById('q').addEventListener('input',apply);
+document.querySelectorAll('#t th').forEach((th,i)=>th.addEventListener('click',()=>{
+  const dir=th.dataset.d==='1'?-1:1;
+  document.querySelectorAll('#t th').forEach(x=>x.dataset.d='');
+  th.dataset.d=dir===1?'1':'0';
+  const num=v=>{const f=parseFloat(v.replace(/[^0-9.\-]/g,''));return isNaN(f)?null:f};
+  rows.sort((a,b)=>{const x=a.cells[i].textContent.trim(), y=b.cells[i].textContent.trim();
+    const nx=num(x), ny=num(y);
+    if(nx!==null&&ny!==null) return (nx-ny)*dir;
+    return x.localeCompare(y)*dir;});
+  rows.forEach(r=>tb.appendChild(r));
+}));
+apply();
+</script>
+</body></html>
