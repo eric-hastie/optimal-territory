@@ -121,7 +121,7 @@ to see how far the ranking moves when a weight is wrong.</em>
 <tbody>
 <tr>
   <td class="term">eng_band</td>
-  <td class="n">42<span class="wbar" style="width:100%"></span></td>
+  <td class="n">50<span class="wbar" style="width:100%"></span></td>
   <td>100 at 5 to 50 engineers. 35 under 5, 15 under 2. Decays to 55 at 51 to 100 and 35 above,
       tagging the row <span class="flag">via team</span> and instead cutting it.</td>
   <td>The buying unit is a team of 5 to 50 with one owner. <strong>The floor is about ability to spend,
@@ -130,37 +130,36 @@ to see how far the ranking moves when a weight is wrong.</em>
 </tr>
 <tr>
   <td class="term">scm</td>
-  <td class="n">18<span class="wbar" style="width:43%"></span></td>
-  <td>100 for a verified GitHub or GitLab org. 75 for a mention in requisition text with no org resolved.</td>
+  <td class="n">7<span class="wbar" style="width:14%"></span></td>
+  <td>Supported platform confirmed. 100 for a verified GitHub or GitLab org, 75 for a mention in their own requisitions.</td>
   <td>No source control, no product. A verified org outranks a mention because the org is a checkable
       fact and the mention is someone's job ad. <strong>A private org is not a negative</strong>: most
       companies keep product repos closed, which says nothing about fit.</td>
 </tr>
 <tr>
   <td class="term">eng_share</td>
-  <td class="n">15<span class="wbar" style="width:36%"></span></td>
-  <td>100 at 25% or more of staff. 70 between 10 and 25%. 35 below 10%.</td>
-  <td>15 engineers in a 236-person company is a different organisation from 15 in a 30-person company,
-      and the band alone cannot see the difference. Observed quartiles across the board: 5 / 18 / 28 / 43.</td>
+  <td class="n">8<span class="wbar" style="width:16%"></span></td>
+  <td>100 at 25% or more of staff, 70 between 10 and 25%, 35 below 10%. Held at 8 as an adjuster.</td>
+  <td>15 engineers in a 236-person company is a different organisation from 15 in a 30-person company. Weight cut from 15 to 8 in August 2026: on 40% of rows it restates the headcount band, and a low share is the ordinary shape of a regulated enterprise where one team buys.</td>
 </tr>
 <tr>
   <td class="term">data_sensitivity</td>
-  <td class="n">10<span class="wbar" style="width:24%"></span></td>
-  <td>100 when a regime is named and self-attributed. 0 when we looked and found none.</td>
+  <td class="n">18<span class="wbar" style="width:36%"></span></td>
+  <td>100 when a regime is named and self-attributed. Weight raised from 10 to 18: it repeats across four of the seven published customers.</td>
   <td>An amplifier, only ever a selector. Repeats across four of the seven published case studies, and it is
       a property of the data and instead an industry code. An <em>in-progress</em> programme is labelled
       and scored, because an active audit is a dated live trigger and instead a weaker certificate.</td>
 </tr>
 <tr>
   <td class="term">distributed</td>
-  <td class="n">8<span class="wbar" style="width:19%"></span></td>
+  <td class="n">9<span class="wbar" style="width:18%"></span></td>
   <td>100 with an offshore or cross-timezone staff cluster. 0 when locations were read and the team is co-located.</td>
   <td>Amplifier. The named root cause in one reference customer: juniors blocked waiting for the only
       reviewer to wake up in another timezone.</td>
 </tr>
 <tr>
   <td class="term">staff_metro</td>
-  <td class="n">7<span class="wbar" style="width:17%"></span></td>
+  <td class="n">8<span class="wbar" style="width:16%"></span></td>
   <td>100 in an event metro with 20%+ of staff, 60 in one below 20%, 30 outside the event metros.</td>
   <td>The weakest term by design, and it must stay weak. This is <strong>staff</strong> by metro, not
       engineers by metro: the two facets are published separately and only ever crossed, so identical numbers
