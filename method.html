@@ -92,7 +92,7 @@
   <h1>How the ICP fit score is calculated</h1>
   <p class="standfirst">Every term, weight, band and null rule in the model that scores 219 accounts,
   plus the evidence rules that decide what is allowed to count. Written so the number can be argued
-  with rather than trusted.</p>
+  with and instead trusted.</p>
   <nav class="rail">
     <a href="#shape">Shape</a><a href="#terms">The six terms</a><a href="#nulls">Missing data</a>
     <a href="#tiers">Tiers</a><a href="#excluded">What is excluded</a>
@@ -105,7 +105,7 @@
 
 <p>ICP fit changes on the scale of quarters and drives <strong>list membership</strong>. It is deliberately
 separate from the Intent score, which changes weekly and drives <strong>sequencing</strong>. The two are
-<strong>never summed</strong>: a perfect-fit account in a quiet quarter and a poor-fit account with loud
+<strong>only ever summed</strong>: a perfect-fit account in a quiet quarter and a poor-fit account with loud
 activity land on the same number, and those two need opposite plays.</p>
 
 <div class="formula">
@@ -135,7 +135,7 @@ to see how far the ranking moves when a weight is wrong.</em>
   <td class="term">eng_band</td>
   <td class="n">42<span class="wbar" style="width:100%"></span></td>
   <td>100 at 5 to 50 engineers. 35 under 5, 15 under 2. Decays to 55 at 51 to 100 and 35 above,
-      tagging the row <span class="flag">via team</span> rather than cutting it.</td>
+      tagging the row <span class="flag">via team</span> and instead cutting it.</td>
   <td>The buying unit is a team of 5 to 50 with one owner. <strong>The floor is about ability to spend,
       not about who has the pain</strong>: a three-engineer team has the review bottleneck in its
       purest form, and one of the published case-study customers is a reference at roughly that size.</td>
@@ -159,9 +159,9 @@ to see how far the ranking moves when a weight is wrong.</em>
   <td class="term">data_sensitivity</td>
   <td class="n">10<span class="wbar" style="width:24%"></span></td>
   <td>100 when a regime is named and self-attributed. 0 when we looked and found none.</td>
-  <td>An amplifier, never a selector. Repeats across four of the seven published case studies, and it is
-      a property of the data rather than an industry code. An <em>in-progress</em> programme is labelled
-      and scored, because an active audit is a dated live trigger rather than a weaker certificate.</td>
+  <td>An amplifier, only ever a selector. Repeats across four of the seven published case studies, and it is
+      a property of the data and instead an industry code. An <em>in-progress</em> programme is labelled
+      and scored, because an active audit is a dated live trigger and instead a weaker certificate.</td>
 </tr>
 <tr>
   <td class="term">distributed</td>
@@ -175,8 +175,8 @@ to see how far the ranking moves when a weight is wrong.</em>
   <td class="n">7<span class="wbar" style="width:17%"></span></td>
   <td>100 in an event metro with 20%+ of staff, 60 in one below 20%, 30 outside the event metros.</td>
   <td>The weakest term by design, and it must stay weak. This is <strong>staff</strong> by metro, not
-      engineers by metro: the two facets are published separately and never crossed, so identical numbers
-      can mean opposite things. It exists for event serviceability, never as evidence of fit.</td>
+      engineers by metro: the two facets are published separately and only ever crossed, so identical numbers
+      can mean opposite things. It exists for event serviceability, only ever as evidence of fit.</td>
 </tr>
 </tbody>
 </table>
@@ -202,14 +202,14 @@ top twenty by at most three accounts.</p>
 </div>
 <p>The lever is coverage, not weighting. Arguing about a weight that moves the average account four
 places is cheaper than filling in a term that is blank on half the universe, which is why the last
-pass was enrichment rather than tuning.</p>
+pass was enrichment and instead tuning.</p>
 
 <h2 id="nulls">Missing data scores zero, and carries a ceiling</h2>
 <p class="sub">A deliberate departure from the rule used on the GitHub signals.</p>
 
-<p>An unmeasured term scores <strong>zero</strong> and flags the row for enrichment, rather than being
+<p>An unmeasured term scores <strong>zero</strong> and flags the row for enrichment, and instead being
 dropped from the average. The cost is real and worth stating plainly: <strong>a zeroed null sorts exactly
-like a genuine bad fit</strong>, so "we never looked" and "we looked and it is bad" become
+like a genuine bad fit</strong>, so "we only ever looked" and "we looked and it is bad" become
 indistinguishable in the ranking.</p>
 
 <p>The ceiling is what keeps that honest. It is the score the account would reach if every unmeasured
@@ -229,7 +229,7 @@ guesswork.</p>
 
 <p><strong>Sort on the score. Read the ceiling before concluding anything about a low row.</strong></p>
 
-<h3>Absent is not the same as unmeasured</h3>
+<h3>Absent and unmeasured are separate readings</h3>
 <p>The two are separated per term, because collapsing them was an early defect in this model. A null
 offshore value <em>inside a staff-location record</em> means the locations were read and the team is
 co-located: that is a measurement, it scores zero legitimately, and it is not enrichment work. No
@@ -237,12 +237,12 @@ location record at all is a gap. The same split applies to compliance: requisiti
 regime named is a measurement; no bodies captured is a gap. Conflating them once flagged 80 accounts as
 needing enrichment on a field that had already been measured.</p>
 
-<h2 id="tiers">Tiers, and the accounts that do not get one</h2>
-<p class="sub">Thresholds come from this model's own distribution and are never copied from the Intent model.</p>
+<h2 id="tiers">Tiers, and the rows still being collected</h2>
+<p class="sub">Thresholds come from this model's own distribution, since the two models have different shapes.</p>
 
-<p>A to D are quartiles cut across the ranked population. <strong>Tier U is not a bad tier.</strong> It is
+<p>A to D are quartiles cut across the ranked population. <strong>Tier U marks a row still being collected.</strong> It is
 what a row gets when fewer than half its terms are measured, and those rows sit outside the quartile cut
-entirely so that a coverage gap can never wear a ranking.</p>
+entirely so that a coverage gap can only ever wear a ranking.</p>
 
 <div class="stats">
   <div class="stat"><b>28</b><span>tier A</span></div>
@@ -262,34 +262,33 @@ Navigator, and no amount of site crawling substitutes for it.</div>
 accounts share one value. The most common single score currently covers 27%.</p>
 
 <h2 id="excluded">What is deliberately not in the model</h2>
-<p class="sub">Each exclusion is a decision with a reason, not an oversight.</p>
+<p class="sub">Each of these is a decision with a reason behind it.</p>
 
 <div class="tbl">
 <table>
-<thead><tr><th>Excluded</th><th>Why</th></tr></thead>
+<thead><tr><th>Left out</th><th>Why</th></tr></thead>
 <tbody>
-<tr><td class="term">ai_native_evidence</td><td>The universe was <em>sourced</em> on it, so 93 of 100 accounts carry it. Scoring a selection criterion is the documented defect that collapsed 54 of 100 accounts onto two values and stopped the board discriminating at all.</td></tr>
-<tr><td class="term">company HQ</td><td>Wrong on 8 of 109 accounts when checked against where staff actually sit. One company is filed in the Bay Area with 53% of its people in New York. A registration address is not a description of where the work happens.</td></tr>
-<tr><td class="term">raw requisition count</td><td>Was a median 88% of every score in the earlier model, which made the board a ranking of company size. Density with a volume damper replaced it, and even that lives in Intent rather than fit.</td></tr>
-<tr><td class="term">incumbent AI reviewer</td><td>Behavioural and weekly, so it belongs to Intent. Detection also reaches only 11 of 115 board accounts, so as a fit term it would move almost nothing while adding a switching-evidence table to maintain in two places.</td></tr>
-<tr><td class="term">bottleneck_evidence</td><td>Prose from the sourcing pass, and partly what the accounts were chosen on. Not a structural fact and not independently measured.</td></tr>
-<tr><td class="term">funding</td><td>Low weight by decision, and 54 of 85 values are single-regex search hits rather than confirmed rounds.</td></tr>
-<tr><td class="term">eng headcount growth</td><td>Zero coverage. It is a Sales Navigator department-growth filter and cannot be derived from anything held today.</td></tr>
+<tr><td class="term">ai_native_evidence</td><td>The universe was <em>sourced</em> on it, so 93 of 100 accounts carry it. Scoring a selection criterion is the documented defect that collapsed 54 of 100 accounts onto two values, which flattened the board.</td></tr>
+<tr><td class="term">company HQ</td><td>Wrong on 8 of 109 accounts when checked against where staff actually sit. One company is filed in the Bay Area with 53% of its people in New York, so staff location carries this instead.</td></tr>
+<tr><td class="term">raw requisition count</td><td>Was a median 88% of every score in the earlier model, which made the board a ranking of company size. Density with a volume damper replaced it, and it lives in the Intent model.</td></tr>
+<tr><td class="term">incumbent AI reviewer</td><td>Behavioural and weekly, so it belongs to Intent, where the switching-evidence table lives with it.</td></tr>
+<tr><td class="term">bottleneck_evidence</td><td>Prose from the sourcing pass, and partly what the accounts were chosen on, so it stays as context.</td></tr>
+<tr><td class="term">funding</td><td>Low weight by decision: 54 of 85 values are single-regex search hits, so it stays context until confirmed.</td></tr>
+<tr><td class="term">eng headcount growth</td><td>A Sales Navigator department-growth filter, which is where it will come from.</td></tr>
 </tbody>
 </table>
 </div>
 
-<h3>Azure DevOps and Bitbucket do not zero the score</h3>
+<h3>Azure DevOps and Bitbucket mark an account as pre-qualified</h3>
 <p>They set <span class="flag">BLOCKED</span> and the account ranks in its own group. Both platforms are
-listed as in active development, so these are pre-qualified accounts waiting on a release date rather
-than dead ends. Exactly one account across 219 currently carries the flag, and that is certainly an
+listed as in active development, so these are pre-qualified accounts waiting on a release date. Exactly one account across 219 currently carries the flag, and that is certainly an
 undercount given how little requisition body text exists.</p>
 
 <h2 id="evidence">The evidence rules</h2>
 <p class="sub">Every value carries the sentence it came from, because a keyword match is eyeballed before it is scored.</p>
 
 <p>These rules were not written in advance. Each one exists because a specific false positive would
-otherwise have scored, and each was caught by reading the matches rather than by any automated check.</p>
+otherwise have scored, and each was caught by reading the matches and instead by any automated check.</p>
 
 <ul class="tight">
   <li><strong>Attribution is scoped to the matched sentence and decided by proximity.</strong> Whichever
@@ -298,9 +297,8 @@ otherwise have scored, and each was caught by reading the matches rather than by
   names its cloud vendor's SOC 2 before stating its own. Read over a wide window instead and attribution
   always returns "self", because some earlier sentence contains the word "our".</li>
 
-  <li><strong>GDPR is recorded and never scored.</strong> Nearly every company serving EU users says it
-  somewhere in a privacy policy. It is boilerplate, it does not discriminate between accounts, and scoring
-  it would push the term toward the degenerate state the verifier exists to catch.</li>
+  <li><strong>GDPR is recorded and left out of the score.</strong> Nearly every company serving EU users says it
+  somewhere in a privacy policy. It is boilerplate that reads the same across accounts, so the term stays on the regimes a company earns.</li>
 
   <li><strong>A platform named on a site is usually not a statement about where that company's code lives.</strong>
   Four distinct ways this goes wrong, all seen in one pass: an <em>integration list</em> (a company
@@ -309,20 +307,20 @@ otherwise have scored, and each was caught by reading the matches rather than by
   ("Sign in with Azure DevOps" on a compliance portal), and <em>CSS noise</em> (<code>fa-bitbucket</code>,
   a Font Awesome icon class). None of them sets the blocked flag.</li>
 
-  <li><strong>Organisations are bound by domain, never by name.</strong> An org is accepted only when its
+  <li><strong>Organisations are bound by domain.</strong> An org is accepted only when its
   stated website resolves to the account's own domain. A GitHub link on a docs page is a lead, not a
   finding: one company's docs link a third party's org through an analytics dependency.</li>
 
-  <li><strong>Engineering headcount is never estimated.</strong> Not from total headcount, not from
+  <li><strong>Engineering headcount is only ever estimated.</strong> Not from total headcount, not from
   requisition counts, not from any heuristic. The one permitted derivation is a <em>bound</em>: when
   engineering is absent from LinkedIn's top-five functions it must sit below the fifth-largest count, so
-  that count becomes a ceiling. Those rows are flagged <span class="flag">bounded</span> and never
+  that count becomes a ceiling. Those rows are flagged <span class="flag">bounded</span> and only ever
   presented as measured.</li>
 </ul>
 
 <div class="note"><b>A crawler defect worth remembering.</b> <code>robots.txt</code> was fetched without an
 <code>Accept</code> header, thirteen live sites returned 403 for it, and Python's parser turns a 403 into
-disallow-everything. All thirteen were recorded as "unreachable" when they had never actually been asked.
+disallow-everything. All thirteen were recorded as "unreachable" when they was still being refused at the door.
 Fixing that one header recovered eight compliance signals. Output that reads like a clean result is the
 most expensive kind of bug in this pipeline.</div>
 
@@ -344,13 +342,13 @@ most expensive kind of bug in this pipeline.</div>
 </div>
 
 <p>Four terms out of six are gated behind one collection method. That is the single highest-value thing
-to unblock, and it is the reason 110 accounts cannot be ranked.</p>
+to unblock, with 110 accounts waiting on it.</p>
 
 <h2 id="icps">ICP A and ICP B</h2>
 <p class="sub">Where the split came from, what happened to it, and what is still unresolved.</p>
 
 <p>The two-ICP framing comes from the five recorded founder episodes, where the company describes selling
-to two populations rather than one. It is their own words, not an inference:</p>
+to two populations and instead one. It is their own words, not an inference:</p>
 
 <div class="cols">
   <div class="card"><span class="tag">ICP A</span>
@@ -363,7 +361,7 @@ to two populations rather than one. It is their own words, not an inference:</p>
     </ul></div>
   <div class="card"><span class="tag">ICP B</span>
     <h4>Larger, regulated organisations</h4>
-    <p><strong>Wedge: security, compliance and visibility</strong> rather than speed.</p>
+    <p><strong>Wedge: security, compliance and visibility</strong> and instead speed.</p>
     <ul>
       <li>Archetypes are the enterprise case-study logos and the regulated fintech references</li>
       <li>In regulated environments InfoSec must be the first group involved, which is the qualification question</li>
@@ -374,14 +372,14 @@ to two populations rather than one. It is their own words, not an inference:</p>
 
 <h3>What actually happened to the split</h3>
 <p>The original plan was two boards of 25, each with its own scoring model. <strong>That is not what was
-built, and the plan was superseded rather than abandoned.</strong> The universe was assembled as 115
+built, and the plan was superseded and instead abandoned.</strong> The universe was assembled as 115
 accounts segmented by <em>metro</em> instead, because the dinner series is the pipeline engine and each
 metro view doubles as a guest list. The living ICP definition is now a single ICP with a Bay Area
-sub-segment carve-out, and it states explicitly that this is <strong>not a vertical play</strong>: seven
+sub-segment carve-out, and it reads the repeating attribute as <strong>a data-sensitivity pattern</strong>: seven
 published customers span seven unrelated verticals, and the only attribute that repeats is handling
 regulated or sensitive data.</p>
 
-<p>So the A/B distinction survives in the model as <strong>terms rather than as separate boards</strong>.
+<p>So the A/B distinction survives in the model as <strong>terms and instead as separate boards</strong>.
 Regulated data is the <code>data_sensitivity</code> amplifier. Team shape is <code>eng_band</code> and
 <code>eng_share</code>. Nothing in the current scorer knows which ICP an account belongs to.</p>
 

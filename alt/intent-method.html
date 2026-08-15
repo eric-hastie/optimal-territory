@@ -125,21 +125,21 @@ its public repositories at all.</p>
 <tr><td class="term">Invisible</td><td>SDKs, examples and docs. Not the codebase.</td><td>Signals are <strong>nulled, never scored low.</strong></td></tr>
 </tbody></table></div>
 <p><strong>What the material segment actually measures.</strong> Its pull request flow includes
-outside contributors, so for open-source projects this is maintainer review burden rather than
-internal velocity. That is still a real review bottleneck, arguably the clearest form of it,
-and it is labelled as what it is rather than presented as internal throughput.</p>
+outside contributors, so for open-source projects this measures maintainer review burden. That
+is a real bottleneck, arguably the clearest form of it, and each row is labelled with which of
+the two it describes.</p>
 
 <h2 id="incumbent">What is already installed</h2>
 <p class="sub">Three states only, and a fourth that was removed.</p>
 <p>A tool counts as <strong>deployed</strong> only when it is running at real volume, across a
 meaningful share of pull requests, and recently. Anything below that bar is recorded as
-<strong>traces</strong> and scored neither up nor down, because a handful of reviews spread over a
-year cannot be distinguished from idle curiosity. <strong>None</strong> is exactly that.</p>
-<p><strong>Churn was built and then deleted.</strong> A reviewer that stopped running looks like
-the warmest possible moment. It is also indistinguishable from a team that bought the tool and
-moved the work into private repositories. One account showed fourteen reviews spread across more
-than eight hundred pull requests over fourteen months, which reads as a trial that fizzled and
-would look identical to a successful private rollout.</p>
+<strong>traces</strong> and left unscored, since a handful of reviews spread over a year reads the
+same as idle curiosity. <strong>None</strong> is exactly that.</p>
+<p><strong>On a reviewer that goes quiet.</strong> It looks like the warmest possible moment, and it
+reads the same from outside as a team that bought the tool and moved the work into private
+repositories. One account showed fourteen reviews across more than eight hundred pull requests
+over fourteen months, which fits both stories equally well, so the state is recorded and left
+out of the score.</p>
 
 <h2 id="control">The control row</h2>
 <p>An existing customer with public repositories is carried through every scoring run. Whatever the
