@@ -1,26 +1,15 @@
-<title>Optimal AI Territory Plan</title>
+<title>Alt: Optimal AI Territory Plan</title>
 <style>
-  :root{
-    --ground:#f6f7f9; --surface:#ffffff; --sunk:#eef1f5;
-    --ink:#12161c; --body:#39424e; --muted:#6b7684; --line:#dee3ea;
-    --accent:#23408f;
-    --a:#0e7c66; --a-soft:#e4f2ee;
-    --b:#8c4a2f; --b-soft:#f7ebe5;
-    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  }
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --ground:#0c0f14; --surface:#151a21; --sunk:#1b222b;
-      --ink:#e9edf3; --body:#bdc6d2; --muted:#8894a3; --line:#262e38;
-      --accent:#7f9dff; --a:#46c6a6; --a-soft:#12241f; --b:#e0906b; --b-soft:#271913;
-    }
-  }
-  :root[data-theme="dark"]{
-    --ground:#0c0f14; --surface:#151a21; --sunk:#1b222b;
-    --ink:#e9edf3; --body:#bdc6d2; --muted:#8894a3; --line:#262e38;
-    --accent:#7f9dff; --a:#46c6a6; --a-soft:#12241f; --b:#e0906b; --b-soft:#271913;
-  }
+:root{--ground:#0b0b14;--surface:#12121f;--sunk:#171728;--zebra:#141423;
+ --head:#1c1c30;--panel:#12121f;--ink:#f4f5fd;--body:#c9cfee;--muted:#9399b8;
+ --line:#282844;--accent:#a78bfa;--a:#7a98c8;--b:#f07898;
+ --a-soft:#17223a;--b-soft:#2a1622;--accent-soft:#1d1636;--excluded:#f07898;
+ --measured:#7dd3a8;--unmeasured:#e0b062;
+ --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  
+  
+  
   *{box-sizing:border-box}
   body{margin:0;background:var(--ground);color:var(--body);
     font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
@@ -69,7 +58,7 @@
     background:var(--sunk);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
   .method p{margin:0;font-size:14.5px;flex:1;min-width:280px}
   a.btn{display:inline-flex;align-items:center;gap:8px;font:600 13.5px var(--sans);
-    text-decoration:none;color:var(--surface);background:var(--accent);
+    text-decoration:none;color:#14102a;background:var(--accent);
     padding:9px 15px;border-radius:9px;white-space:nowrap}
   a.btn:hover{opacity:.9}
   a.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
@@ -220,7 +209,7 @@
 </section>
 
 <div class="foot">
-  <span>Prepared by Eric Hastie</span><span><a href="alt/index.html" style="color:inherit">See this in Optimal's colours</a></span>
+  <span>Prepared by Eric Hastie</span><span><a href="../index.html" style="color:inherit">Back to the default colours</a></span>
   <span>Built August 2026. Figures update as the lists do.</span>
 </div>
 </div>

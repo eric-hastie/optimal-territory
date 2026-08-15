@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Alt: ICP B: governance accounts</title>
+<style>
+:root{--ground:#0b0b14;--surface:#12121f;--sunk:#171728;--zebra:#141423;
+ --head:#1c1c30;--panel:#12121f;--ink:#f4f5fd;--body:#c9cfee;--muted:#9399b8;
+ --line:#282844;--accent:#a78bfa;--a:#7a98c8;--b:#f07898;
+ --a-soft:#17223a;--b-soft:#2a1622;--accent-soft:#1d1636;--excluded:#f07898;
+ --measured:#7dd3a8;--unmeasured:#e0b062;
+ --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+
+
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--body);font:15px/1.6 var(--sans);
+ -webkit-font-smoothing:antialiased}
+.page{max-width:1280px;margin:0 auto;padding:0 22px 70px}
+header{padding:46px 0 22px}
+.back{font:600 12.5px var(--mono);color:var(--muted);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--accent)}
+.tag{display:inline-block;font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;
+ padding:4px 9px;border-radius:6px;background:var(--sunk);color:var(--muted);margin:18px 0 12px}
+.tag.a{color:var(--a)} .tag.b{color:var(--b)}
+h1{font-size:34px;line-height:1.1;letter-spacing:-.022em;color:var(--ink);margin:0 0 14px;
+ font-weight:670;text-wrap:balance}
+.lede{font-size:16.5px;color:var(--muted);max-width:70ch;margin:0}
+.reading{margin:22px 0 0;padding:14px 17px;background:var(--sunk);border:1px solid var(--line);
+ border-radius:11px;font-size:14px;max-width:88ch}
+.ctrl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:22px 0 10px}
+input{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;
+ padding:7px 11px;font-size:13.5px;min-width:210px}
+.cnt{font:600 12px var(--mono);color:var(--muted)}
+.wrap{overflow:auto;max-height:72vh;border:1px solid var(--line);border-radius:12px;
+ background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13px;table-layout:fixed}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{position:sticky;top:0;background:var(--head);z-index:3;cursor:pointer;
+ font:700 10.5px/1.35 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--ink);
+ border-bottom:2px solid var(--line);white-space:normal;overflow-wrap:normal;vertical-align:bottom}
+.hd{align-items:flex-end;flex-wrap:wrap}
+td{overflow-wrap:break-word}
+tbody tr:nth-child(even){background:var(--zebra)}
+tbody tr:hover{background:var(--head)}
+td{color:var(--body)}
+td.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:12.5px;
+ color:var(--ink)}
+td.score{color:var(--ink);font-weight:700;font-size:14px}
+td.why{color:var(--body);font-size:12.5px;line-height:1.5}
+.blank{color:var(--muted);opacity:.5}
+.hd{position:relative;display:inline-flex;align-items:center;gap:4px}
+.q{font-style:normal;font-size:9.5px;border:1px solid var(--line);border-radius:50%;width:14px;
+ height:14px;display:inline-flex;align-items:center;justify-content:center}
+.pop{display:none;position:absolute;top:20px;left:0;width:330px;background:var(--surface);
+ border:1px solid var(--line);border-radius:10px;padding:13px;z-index:9;white-space:normal;
+ font:400 12.5px/1.5 var(--sans);text-transform:none;letter-spacing:0;color:var(--body);
+ box-shadow:0 10px 30px rgba(0,0,0,.55)}
+th:nth-last-child(-n+3) .pop{left:auto;right:0}
+.hd:hover .pop{display:block}
+.pop b{display:block;margin-bottom:6px;color:var(--ink);font-size:13.5px}
+.pop span{display:block;margin-top:7px;color:var(--muted)}
+.pop .c{color:var(--ink)}
+footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);
+ font-size:12.5px;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+</style></head><body>
+<div class="page">
+<header>
+  <a class="back" href="index.html">&larr; Territory plan</a>
+  <span class="tag b">ICP B</span>
+  <h1>ICP B: governance accounts</h1>
+  <p class="lede">Twenty-five regulated organisations where agent output is supervised and verified before it ships, and the record of what was reviewed carries as much weight as the review. Built from public registries that carry a dated, checkable obligation.</p>
+  <div class="reading"><strong>Reading this list.</strong> Compliance is what the company states about itself on its own site, with the sentence kept as evidence. A trust portal is public proof that a vendor-review gate exists, which tells you the shape of the cycle before the first call. Hover any column heading for
+  what it is, how it was collected, and how to read it.</div>
+</header>
+<div class="ctrl">
+  <input id="q" type="search" placeholder="Search company...">
+  <span class="cnt" id="cnt"></span>
+  <span class="cnt">25 accounts &middot; built 2026-08-14</span>
+</div>
+<div class="wrap"><table id="t"><colgroup><col style="width:12.0%"><col style="width:13.5%"><col style="width:13.5%"><col style="width:13.5%"><col style="width:13.5%"><col style="width:8.0%"><col style="width:26.0%"></colgroup><thead><tr><th><span class="hd">Company<i class="q">?</i><span class="pop"><b>Company</b><span class="w">Canonical company name, with the sub-line showing what they do or the seed account they were matched from.</span><span class="h"><em>How:</em> Entities are collapsed by normalised name and bound by DOMAIN, never by name alone. &#x27;Dapta&#x27; and &#x27;Dapta (CUSTOMER)&#x27; are one row.</span><span class="c"><em>Read it as:</em> One search for &#x27;Chorus&#x27; once returned eleven different companies. If a domain is missing, treat the identity as unconfirmed.</span></span></span></th><th><span class="hd">Sourcing route<i class="q">?</i><span class="pop"><b>Sourcing route</b><span class="w">The public source this account was found through.</span><span class="h"><em>How:</em> Compliance certification registries, healthcare and lending regulatory footprints, insurance and government platform categories, PCI scope, and peers of published customers.</span><span class="c"><em>Read it as:</em> A route explains how an account was found, not how good it is. Registry-sourced rows carry a dated obligation; category-sourced rows carry a shape.</span></span></span></th><th><span class="hd">Compliance<i class="q">?</i><span class="pop"><b>Compliance</b><span class="w">Regimes the company states it holds, in its own words on its own site.</span><span class="h"><em>How:</em> Read from trust, security and compliance pages. Only claims the company makes about itself count; a hosting provider&#x27;s certificate is recorded separately and never scored.</span><span class="c"><em>Read it as:</em> An in-progress programme is shown as such. That is often the better moment to arrive, because the work is funded and underway.</span></span></span></th><th><span class="hd">Trust portal<i class="q">?</i><span class="pop"><b>Trust portal</b><span class="w">Whether the company runs a public trust or security portal.</span><span class="h"><em>How:</em> Detected from the company&#x27;s own pages and the portal vendors behind them.</span><span class="c"><em>Read it as:</em> This is the clearest public evidence that a vendor-review gate exists, which tells you the shape of the sales cycle before the first call.</span></span></span></th><th><span class="hd">Staff<i class="q">?</i><span class="pop"><b>Staff</b><span class="w">Approximate total headcount, as an order of magnitude.</span><span class="h"><em>How:</em> From public sources, recorded as a band rather than a figure.</span><span class="c"><em>Read it as:</em> Total staff, not engineers. Engineering headcount for this segment has to come from a people-data source and is never estimated from total headcount.</span></span></span></th><th><span class="hd">Fit score<i class="q">?</i><span class="pop"><b>Fit score</b><span class="w">Governance fit: how strongly an organisation carries obligations that make verified, evidenced review a requirement.</span><span class="h"><em>How:</em> Four weighted terms: compliance posture, procurement surface, scale, and the strength of the sourcing route. Weights sum to 100.</span><span class="c"><em>Read it as:</em> Provisional. The model is built on what is measurable from public sources today, and it gains terms as security hiring and published AI policies are collected.</span></span></span></th><th><span class="hd">Evidence<i class="q">?</i><span class="pop"><b>Evidence</b><span class="w">The reason each term scored what it scored, term by term. Hover the cell for the full text.</span><span class="h"><em>How:</em> Written by the scorer as it runs, quoting the source of each value: which regime was named and whether the company claimed it itself, which GitHub org was matched and how it was bound to the domain, whether staff locations were read.</span><span class="c"><em>Read it as:</em> This is where a score stops being a number and becomes checkable. If a row looks wrong, read this column before changing a weight.</span></span></span></th></tr></thead><tbody><tr><td>Granicus</td><td>FedRAMP and govtech</td><td>FEDRAMP, HIPAA (achieved)</td><td>yes</td><td>1000 to 1500</td><td class="num score">100</td><td class="why" title="Holds FEDRAMP, HIPAA, published on its own site; runs a public trust portal, so a vendor-review gate already exists and the security conversation starts early; 1000 to 1500 staff in FedRAMP and govtech, large enough that a single team owns the review process.">Holds FEDRAMP, HIPAA, published on its own site; runs a public t&hellip;</td></tr>
+<tr><td>symplr</td><td>peer of an existing customer</td><td>HITRUST, SOC 2 (achieved)</td><td>yes</td><td>1500 to 2500</td><td class="num score">100</td><td class="why" title="Holds HITRUST, SOC 2, published on its own site; runs a public trust portal, so a vendor-review gate already exists and the security conversation starts early; 1500 to 2500 staff in peer of an existing customer, large enough that a single team owns the review process.">Holds HITRUST, SOC 2, published on its own site; runs a public t&hellip;</td></tr>
+<tr><td>Duck Creek Technologies</td><td>insurance core systems</td><td>PCI, SOC 2 (achieved)</td><td>yes</td><td>1500 to 2500</td><td class="num score">96</td><td class="why" title="Holds PCI, SOC 2, published on its own site; runs a public trust portal, so a vendor-review gate already exists and the security conversation starts early; 1500 to 2500 staff in insurance core systems, large enough that a single team owns the review process.">Holds PCI, SOC 2, published on its own site; runs a public trust&hellip;</td></tr>
+<tr><td>Innovaccer</td><td>healthcare data platform</td><td>HIPAA, HITRUST, SOC 2 (achieved)</td><td>yes</td><td>1000 to 2000</td><td class="num score">96</td><td class="why" title="Holds HIPAA, HITRUST, SOC 2, published on its own site; runs a public trust portal, so a vendor-review gate already exists and the security conversation starts early; 1000 to 2000 staff in healthcare data platform, large enough that a single team owns the review process.">Holds HIPAA, HITRUST, SOC 2, published on its own site; runs a p&hellip;</td></tr>
+<tr><td>OpenGov</td><td>FedRAMP and govtech</td><td>SOC 2 (achieved)</td><td>yes</td><td>800 to 1500</td><td class="num score">91</td><td class="why" title="Holds SOC 2, published on its own site; runs a public trust portal, so a vendor-review gate already exists and the security conversation starts early; 800 to 1500 staff in FedRAMP and govtech, large enough that a single team owns the review process.">Holds SOC 2, published on its own site; runs a public trust port&hellip;</td></tr>
+<tr><td>NEOGOV</td><td>FedRAMP and govtech</td><td>FEDRAMP, PCI, SOC 2, SOC2 (achieved)</td><td>yes</td><td>600 to 1000</td><td class="num score">91</td><td class="why" title="Holds FEDRAMP, PCI, SOC 2, SOC2, published on its own site; runs a public trust portal, so a vendor-review gate already exists and the security conversation starts early; 600 to 1000 staff in FedRAMP and govtech, large enough that a single team owns the review process.">Holds FEDRAMP, PCI, SOC 2, SOC2, published on its own site; runs&hellip;</td></tr>
+<tr><td>Ramp</td><td>PCI and card issuing</td><td>SOC 2, SOC2 (achieved)</td><td>yes</td><td>800 to 1500</td><td class="num score">91</td><td class="why" title="Holds SOC 2, SOC2, published on its own site; runs a public trust portal, so a vendor-review gate already exists and the security conversation starts early; 800 to 1500 staff in PCI and card issuing, large enough that a single team owns the review process.">Holds SOC 2, SOC2, published on its own site; runs a public trus&hellip;</td></tr>
+<tr><td>Tyler Technologies</td><td>FedRAMP and govtech</td><td>PCI (achieved)</td><td><span class="blank">&middot;</span></td><td>6000 to 9000</td><td class="num score">75</td><td class="why" title="Holds PCI, published on its own site; 6000 to 9000 staff in FedRAMP and govtech, large enough that a single team owns the review process.">Holds PCI, published on its own site; 6000 to 9000 staff in FedR&hellip;</td></tr>
+<tr><td>Payoneer</td><td>PCI and payments</td><td>PCI, SOC 2 (achieved)</td><td><span class="blank">&middot;</span></td><td>2000 to 3000</td><td class="num score">75</td><td class="why" title="Holds PCI, SOC 2, published on its own site; 2000 to 3000 staff in PCI and payments, large enough that a single team owns the review process.">Holds PCI, SOC 2, published on its own site; 2000 to 3000 staff &hellip;</td></tr>
+<tr><td>Bonterra</td><td>FedRAMP and govtech</td><td>PCI, SOC 2 (achieved)</td><td><span class="blank">&middot;</span></td><td>1000 to 1500</td><td class="num score">75</td><td class="why" title="Holds PCI, SOC 2, published on its own site; 1000 to 1500 staff in FedRAMP and govtech, large enough that a single team owns the review process.">Holds PCI, SOC 2, published on its own site; 1000 to 1500 staff &hellip;</td></tr>
+<tr><td>Shift4</td><td>PCI and payments</td><td>PCI (achieved)</td><td><span class="blank">&middot;</span></td><td>2000 to 3000</td><td class="num score">75</td><td class="why" title="Holds PCI, published on its own site; 2000 to 3000 staff in PCI and payments, large enough that a single team owns the review process.">Holds PCI, published on its own site; 2000 to 3000 staff in PCI &hellip;</td></tr>
+<tr><td>Nuvei</td><td>PCI and payments</td><td>PCI (achieved)</td><td><span class="blank">&middot;</span></td><td>1500 to 2500</td><td class="num score">75</td><td class="why" title="Holds PCI, published on its own site; 1500 to 2500 staff in PCI and payments, large enough that a single team owns the review process.">Holds PCI, published on its own site; 1500 to 2500 staff in PCI &hellip;</td></tr>
+<tr><td>BILL</td><td>PCI and payments</td><td>PCI, SOC 2 (achieved)</td><td><span class="blank">&middot;</span></td><td>2000 to 3000</td><td class="num score">75</td><td class="why" title="Holds PCI, SOC 2, published on its own site; 2000 to 3000 staff in PCI and payments, large enough that a single team owns the review process.">Holds PCI, SOC 2, published on its own site; 2000 to 3000 staff &hellip;</td></tr>
+<tr><td>Brex</td><td>PCI and card issuing</td><td>PCI, SOC 2 (achieved)</td><td><span class="blank">&middot;</span></td><td>1000 to 1500</td><td class="num score">75</td><td class="why" title="Holds PCI, SOC 2, published on its own site; 1000 to 1500 staff in PCI and card issuing, large enough that a single team owns the review process.">Holds PCI, SOC 2, published on its own site; 1000 to 1500 staff &hellip;</td></tr>
+<tr><td>PowerSchool</td><td>peer of an existing customer</td><td>SOC 2 (achieved)</td><td><span class="blank">&middot;</span></td><td>2500 to 3500</td><td class="num score">75</td><td class="why" title="Holds SOC 2, published on its own site; 2500 to 3500 staff in peer of an existing customer, large enough that a single team owns the review process.">Holds SOC 2, published on its own site; 2500 to 3500 staff in pe&hellip;</td></tr>
+<tr><td>nCino</td><td>lending and banking</td><td>SOC 2 (achieved)</td><td><span class="blank">&middot;</span></td><td>1500 to 2500</td><td class="num score">71</td><td class="why" title="Holds SOC 2, published on its own site; 1500 to 2500 staff in lending and banking, large enough that a single team owns the review process.">Holds SOC 2, published on its own site; 1500 to 2500 staff in le&hellip;</td></tr>
+<tr><td>Phreesia</td><td>patient intake</td><td>HITRUST, PCI, SOC 2 (achieved)</td><td><span class="blank">&middot;</span></td><td>1000 to 2000</td><td class="num score">71</td><td class="why" title="Holds HITRUST, PCI, SOC 2, published on its own site; 1000 to 2000 staff in patient intake, large enough that a single team owns the review process.">Holds HITRUST, PCI, SOC 2, published on its own site; 1000 to 20&hellip;</td></tr>
+<tr><td>Greenway Health</td><td>healthcare EHR</td><td>HITRUST (achieved)</td><td><span class="blank">&middot;</span></td><td>1500 to 2500</td><td class="num score">71</td><td class="why" title="Holds HITRUST, published on its own site; 1500 to 2500 staff in healthcare EHR, large enough that a single team owns the review process.">Holds HITRUST, published on its own site; 1500 to 2500 staff in &hellip;</td></tr>
+<tr><td>NextGen Healthcare</td><td>healthcare EHR</td><td>HIPAA, HITRUST, SOC 2 (achieved)</td><td><span class="blank">&middot;</span></td><td>2500 to 3500</td><td class="num score">71</td><td class="why" title="Holds HIPAA, HITRUST, SOC 2, published on its own site; 2500 to 3500 staff in healthcare EHR, large enough that a single team owns the review process.">Holds HIPAA, HITRUST, SOC 2, published on its own site; 2500 to &hellip;</td></tr>
+<tr><td>Meazure Learning</td><td>peer of an existing customer</td><td>PCI, SOC 2 (achieved)</td><td><span class="blank">&middot;</span></td><td>500 to 1500</td><td class="num score">66</td><td class="why" title="Holds PCI, SOC 2, published on its own site; 500 to 1500 staff in peer of an existing customer, large enough that a single team owns the review process.">Holds PCI, SOC 2, published on its own site; 500 to 1500 staff i&hellip;</td></tr>
+<tr><td>CivicPlus</td><td>FedRAMP and govtech</td><td>PCI (achieved)</td><td><span class="blank">&middot;</span></td><td>600 to 1000</td><td class="num score">66</td><td class="why" title="Holds PCI, published on its own site; 600 to 1000 staff in FedRAMP and govtech, large enough that a single team owns the review process.">Holds PCI, published on its own site; 600 to 1000 staff in FedRA&hellip;</td></tr>
+<tr><td>Priority Technology</td><td>PCI and payments</td><td>PCI (achieved)</td><td><span class="blank">&middot;</span></td><td>800 to 1200</td><td class="num score">66</td><td class="why" title="Holds PCI, published on its own site; 800 to 1200 staff in PCI and payments, large enough that a single team owns the review process.">Holds PCI, published on its own site; 800 to 1200 staff in PCI a&hellip;</td></tr>
+<tr><td>Tebra</td><td>healthcare EHR</td><td>HIPAA (achieved)</td><td><span class="blank">&middot;</span></td><td>800 to 1500</td><td class="num score">62</td><td class="why" title="Holds HIPAA, published on its own site; 800 to 1500 staff in healthcare EHR, large enough that a single team owns the review process.">Holds HIPAA, published on its own site; 800 to 1500 staff in hea&hellip;</td></tr>
+<tr><td>Alloy</td><td>identity and fraud</td><td>SOC 2 (achieved)</td><td><span class="blank">&middot;</span></td><td>300 to 600</td><td class="num score">62</td><td class="why" title="Holds SOC 2, published on its own site; 300 to 600 staff in identity and fraud, large enough that a single team owns the review process.">Holds SOC 2, published on its own site; 300 to 600 staff in iden&hellip;</td></tr>
+<tr><td>SoundThinking</td><td>public safety and CJIS</td><td>HIPAA, SOC2 (achieved)</td><td><span class="blank">&middot;</span></td><td>300 to 600</td><td class="num score">62</td><td class="why" title="Holds HIPAA, SOC2, published on its own site; 300 to 600 staff in public safety and CJIS, large enough that a single team owns the review process.">Holds HIPAA, SOC2, published on its own site; 300 to 600 staff i&hellip;</td></tr></tbody></table></div>
+<footer><span>Prepared by Eric Hastie</span><span>Sorted by any column. Click a heading.</span></footer>
+</div>
+<script>
+const tb=document.querySelector('#t tbody'), rows=[...tb.rows];
+function apply(){
+  const q=document.getElementById('q').value.toLowerCase(); let n=0;
+  rows.forEach(r=>{const ok=!q||r.cells[0].textContent.toLowerCase().includes(q);
+    r.style.display=ok?'':'none'; if(ok)n++;});
+  document.getElementById('cnt').textContent=n+' shown';
+}
+document.getElementById('q').addEventListener('input',apply);
+document.querySelectorAll('#t th').forEach((th,i)=>th.addEventListener('click',()=>{
+  const dir=th.dataset.d==='1'?-1:1;
+  document.querySelectorAll('#t th').forEach(x=>x.dataset.d='');
+  th.dataset.d=dir===1?'1':'0';
+  const num=v=>{const f=parseFloat(v.replace(/[^0-9.\-]/g,''));return isNaN(f)?null:f};
+  rows.sort((a,b)=>{const x=a.cells[i].textContent.trim(), y=b.cells[i].textContent.trim();
+    const nx=num(x), ny=num(y);
+    if(nx!==null&&ny!==null) return (nx-ny)*dir;
+    return x.localeCompare(y)*dir;});
+  rows.forEach(r=>tb.appendChild(r));
+}));
+apply();
+</script>
+</body></html>

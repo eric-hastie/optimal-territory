@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Alt: How I think about fit</title>
+<style>
+:root{--ground:#0b0b14;--surface:#12121f;--sunk:#171728;--zebra:#141423;
+ --head:#1c1c30;--panel:#12121f;--ink:#f4f5fd;--body:#c9cfee;--muted:#9399b8;
+ --line:#282844;--accent:#a78bfa;--a:#7a98c8;--b:#f07898;
+ --a-soft:#17223a;--b-soft:#2a1622;--accent-soft:#1d1636;--excluded:#f07898;
+ --measured:#7dd3a8;--unmeasured:#e0b062;
+ --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+
+
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--body);font:16px/1.62 var(--sans);
+ -webkit-font-smoothing:antialiased}
+.page{max-width:880px;margin:0 auto;padding:0 24px 80px}
+header{padding:48px 0 26px}
+.back{font:600 12.5px var(--mono);color:var(--muted);text-decoration:none}
+.back:hover{color:var(--accent)}
+.eyebrow{font:700 11px var(--mono);letter-spacing:.15em;text-transform:uppercase;
+ color:var(--accent);margin:20px 0 12px}
+h1{font-size:38px;line-height:1.08;letter-spacing:-.024em;color:var(--ink);margin:0 0 14px;
+ font-weight:680;text-wrap:balance}
+.lede{font-size:17.5px;color:var(--muted);max-width:62ch;margin:0}
+.p{display:flex;gap:20px;padding:24px 0;border-top:1px solid var(--line)}
+.pn{font:700 13px var(--mono);color:var(--accent);padding-top:4px;min-width:26px}
+.p h3{font-size:19px;color:var(--ink);margin:0 0 7px;letter-spacing:-.012em;font-weight:650;
+ text-wrap:balance}
+.p p{margin:0;max-width:64ch}
+.kick{margin:34px 0 0;padding:20px 22px;background:var(--sunk);border:1px solid var(--line);
+ border-radius:12px}
+.kick b{display:block;color:var(--ink);font-size:16px;margin-bottom:7px}
+.kick p{margin:0;max-width:66ch}
+.onward{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+ margin-top:34px;padding:22px;border:1px solid var(--line);border-radius:12px;
+ background:var(--surface)}
+.onward p{margin:0;font-size:15px;color:var(--ink);max-width:52ch}
+a.btn{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--sans);text-decoration:none;
+ color:#14102a;background:var(--accent);padding:11px 17px;border-radius:9px;white-space:nowrap}
+a.btn:hover{opacity:.9}
+a.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+h2{font-size:24px;color:var(--ink);letter-spacing:-.016em;margin:46px 0 4px;font-weight:650}
+h2+.sub{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+p{max-width:68ch}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:11px;margin:18px 0;
+ background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--head);font:700 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;
+ color:var(--ink)}
+tr:last-child td{border-bottom:none}
+td.term{font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+td.n{text-align:right;font-family:var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+strong{color:var(--ink)}
+footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);
+ font-size:13px;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+</style></head><body>
+<div class="page">
+<header>
+  <a class="back" href="index.html">&larr; Territory plan</a>
+  <div class="eyebrow">Fit scoring</div>
+  <h1>How I think about fit</h1>
+  <p class="lede">Five rules that decide what gets counted. They are the reason the list looks the way it does, and each one exists because ignoring it produced a board that ranked the wrong thing.</p>
+</header>
+<article class="p">
+  <div class="pn">01</div>
+  <div><h3>Two scores, never one number</h3><p>Fit answers whether an account should ever be worked and moves on the scale of quarters. Intent answers whether to call this week. Adding them together hides the most interesting quadrant of all: the perfect-fit account that is quiet right now, which is a nurture play, and the poor-fit account that is loud, which is a trap.</p></div>
+</article><article class="p">
+  <div class="pn">02</div>
+  <div><h3>Score the buying unit, not the company</h3><p>Your two largest published customers did not buy as companies. One bought for an internal tools team, the other through a subsidiary. A model that reads company headcount rejects both. So size is read as the team that owns review, and a large organisation qualifies through one team with one owner.</p></div>
+</article><article class="p">
+  <div class="pn">03</div>
+  <div><h3>Never score the criterion you sourced on</h3><p>If a universe is built by searching for a signal, every account in it has that signal, and scoring it ranks nothing. I learned this the expensive way on an earlier board where a single sourcing criterion accounted for most of every score and half the accounts collapsed onto two values.</p></div>
+</article><article class="p">
+  <div class="pn">04</div>
+  <div><h3>A blank is not a zero, and the score has to admit it</h3><p>Absence of evidence gets treated as evidence constantly, and it quietly turns unmeasured accounts into bad ones. Where a missing value scores zero, the row also carries the score it would reach if that gap were filled. The distance between the two tells you whether you are looking at a judgment or a hole.</p></div>
+</article><article class="p">
+  <div class="pn">05</div>
+  <div><h3>Every number carries the sentence it came from</h3><p>Each score links back to the text it was read from, because keyword matches lie in specific ways. A payment processor's certificate quoted on a customer's security page is not that customer's certificate. A definition of a standard is not a claim to hold it. Those were caught by reading matches, not by trusting counts.</p></div>
+</article>
+<div class="kick"><b>What this buys</b><p>A list where every row can be argued with. If a score looks wrong, the evidence column says where it came from and the coverage marker says how much of it was actually measured, so the conversation is about the account rather than about the model.</p></div>
+<div class="onward"><p>The mechanics: terms, weights, bands and current coverage</p><a class="btn" href="method.html">Read the detailed method &rarr;</a></div>
+<footer><span>Prepared by Eric Hastie</span><span>Built 2026-08-14</span></footer>
+</div>
+</body></html>

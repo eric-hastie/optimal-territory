@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Alt: How intent signals are measured</title>
+<style>
+:root{--ground:#0b0b14;--surface:#12121f;--sunk:#171728;--zebra:#141423;
+ --head:#1c1c30;--panel:#12121f;--ink:#f4f5fd;--body:#c9cfee;--muted:#9399b8;
+ --line:#282844;--accent:#a78bfa;--a:#7a98c8;--b:#f07898;
+ --a-soft:#17223a;--b-soft:#2a1622;--accent-soft:#1d1636;--excluded:#f07898;
+ --measured:#7dd3a8;--unmeasured:#e0b062;
+ --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+
+
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--body);font:16px/1.62 var(--sans);
+ -webkit-font-smoothing:antialiased}
+.page{max-width:880px;margin:0 auto;padding:0 24px 80px}
+header{padding:48px 0 26px}
+.back{font:600 12.5px var(--mono);color:var(--muted);text-decoration:none}
+.back:hover{color:var(--accent)}
+.eyebrow{font:700 11px var(--mono);letter-spacing:.15em;text-transform:uppercase;
+ color:var(--accent);margin:20px 0 12px}
+h1{font-size:38px;line-height:1.08;letter-spacing:-.024em;color:var(--ink);margin:0 0 14px;
+ font-weight:680;text-wrap:balance}
+.lede{font-size:17.5px;color:var(--muted);max-width:62ch;margin:0}
+.p{display:flex;gap:20px;padding:24px 0;border-top:1px solid var(--line)}
+.pn{font:700 13px var(--mono);color:var(--accent);padding-top:4px;min-width:26px}
+.p h3{font-size:19px;color:var(--ink);margin:0 0 7px;letter-spacing:-.012em;font-weight:650;
+ text-wrap:balance}
+.p p{margin:0;max-width:64ch}
+.kick{margin:34px 0 0;padding:20px 22px;background:var(--sunk);border:1px solid var(--line);
+ border-radius:12px}
+.kick b{display:block;color:var(--ink);font-size:16px;margin-bottom:7px}
+.kick p{margin:0;max-width:66ch}
+.onward{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+ margin-top:34px;padding:22px;border:1px solid var(--line);border-radius:12px;
+ background:var(--surface)}
+.onward p{margin:0;font-size:15px;color:var(--ink);max-width:52ch}
+a.btn{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--sans);text-decoration:none;
+ color:#14102a;background:var(--accent);padding:11px 17px;border-radius:9px;white-space:nowrap}
+a.btn:hover{opacity:.9}
+a.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+h2{font-size:24px;color:var(--ink);letter-spacing:-.016em;margin:46px 0 4px;font-weight:650}
+h2+.sub{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+p{max-width:68ch}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:11px;margin:18px 0;
+ background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--head);font:700 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;
+ color:var(--ink)}
+tr:last-child td{border-bottom:none}
+td.term{font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+td.n{text-align:right;font-family:var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+strong{color:var(--ink)}
+footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);
+ font-size:13px;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+</style></head><body>
+<div class="page">
+<header>
+  <a class="back" href="index.html">&larr; Territory plan</a>
+  <div class="eyebrow">Intent signals, in detail</div>
+  <h1>How intent signals are measured</h1>
+  <p class="lede">Every measurement pulled from public repositories, how the four measures are built from them, and the gate that decides which accounts they may be applied to at all.</p>
+</header>
+
+<h2 id="raw">What is measured</h2>
+<p class="sub">Every row is a measurement pulled from public repositories, and the customer
+statement it maps to.</p>
+<div class="tbl"><table>
+<thead><tr><th>Measurement</th><th>What it maps to</th><th>Reading it</th></tr></thead>
+<tbody>
+<tr><td class="term">merged with no human review</td><td>The bottleneck itself</td>
+<td><strong>Ambiguous alone.</strong> With no reviewer installed it means no review capacity.
+With one installed it means the opposite.</td></tr>
+<tr><td class="term">self-merge rate</td><td>"When the second engineer was not free, progress froze"</td>
+<td>High means nobody else looked at it.</td></tr>
+<tr><td class="term">time to first human review</td><td>Juniors waiting on a senior in another timezone</td>
+<td>High means review is a queue rather than a step.</td></tr>
+<tr><td class="term">top-2 reviewer share</td><td>One scarce reviewer, the serialization point</td>
+<td>High means the review capacity of a whole team rests on two people.</td></tr>
+<tr><td class="term">stale open pull requests</td><td>The backlog made visible</td>
+<td>Work rotting unreviewed. Read with care on large open-source projects.</td></tr>
+<tr><td class="term">share over a thousand lines</td><td>"Some PRs were thousands of lines"</td>
+<td>Changes too large to review properly.</td></tr>
+<tr><td class="term">reverts and hotfix branches</td><td>Production pain</td>
+<td>Bad code already shipped and had to be pulled.</td></tr>
+<tr><td class="term">pull request volume step</td><td>"PR volume jumped eight to ten times"</td>
+<td>Load just stepped up and review is about to break.</td></tr>
+<tr><td class="term">agent-authored branches</td><td>AI generating the code</td>
+<td>Dates the transition this product sells into.</td></tr>
+<tr><td class="term">commit hour spread</td><td>A distributed team, timezone-gated review</td>
+<td>An inference from UTC timestamps, and labelled as one.</td></tr>
+<tr><td class="term">reviewer installed, first and last seen</td><td>Competitive state and timing</td>
+<td>Which tool is running, at what coverage, and whether it is still active.</td></tr>
+</tbody></table></div>
+
+<h2 id="composites">Four measures, and one total for ordering</h2>
+<p class="sub">Each is scored 0 to 100 against ranges observed across the measured population.</p>
+<div class="tbl"><table>
+<thead><tr><th>Measure</th><th>Weight in the total</th><th>What it answers</th></tr></thead>
+<tbody>
+<tr><td class="term">Bottleneck</td><td class="n">45</td><td>How constrained review is right now: latency, concentration, unreviewed merges, self-merges, large changes, stale backlog.</td></tr>
+<tr><td class="term">Pressure</td><td class="n">25</td><td>Whether load is outgrowing capacity: volume step, agent-authored branches, new contributors, timezone spread.</td></tr>
+<tr><td class="term">Escape</td><td class="n">20</td><td>Whether bad code already reaches production: reverts and hotfixes.</td></tr>
+<tr><td class="term">Readiness</td><td class="n">10</td><td>Timing only, from what is already installed.</td></tr>
+</tbody></table></div>
+<p>The components stay visible next to the total, because they carry different plays. A high
+bottleneck with low pressure is a team that is already stuck. The reverse is a team about to be.</p>
+
+<h2 id="gate">The validity gate</h2>
+<p class="sub">The single most important control on this list, and the reason it is short.</p>
+<p>Pull requests per engineer, measured from public repositories, describes how much a company
+builds <em>in public</em>. Ranking on it produces a leaderboard of open-source tooling companies
+and nothing else. The discriminator that works is the share of a company's engineers who appear in
+its public repositories at all.</p>
+<div class="tbl"><table>
+<thead><tr><th>Band</th><th>Meaning</th><th>Treatment</th></tr></thead>
+<tbody>
+<tr><td class="term">Material</td><td>Most engineers touch public repositories. The repository is the product.</td><td>Signals apply.</td></tr>
+<tr><td class="term">Partial</td><td>Mixed.</td><td>Signals apply with caution.</td></tr>
+<tr><td class="term">Invisible</td><td>SDKs, examples and docs. Not the codebase.</td><td>Signals are <strong>nulled, never scored low.</strong></td></tr>
+</tbody></table></div>
+<p><strong>What the material segment actually measures.</strong> Its pull request flow includes
+outside contributors, so for open-source projects this is maintainer review burden rather than
+internal velocity. That is still a real serialization problem, arguably the clearest form of it,
+and it is labelled as what it is rather than presented as internal throughput.</p>
+
+<h2 id="incumbent">What is already installed</h2>
+<p class="sub">Three states only, and a fourth that was removed.</p>
+<p>A tool counts as <strong>deployed</strong> only when it is running at real volume, across a
+meaningful share of pull requests, and recently. Anything below that bar is recorded as
+<strong>traces</strong> and scored neither up nor down, because a handful of reviews spread over a
+year cannot be distinguished from idle curiosity. <strong>None</strong> is exactly that.</p>
+<p><strong>Churn was built and then deleted.</strong> A reviewer that stopped running looks like
+the warmest possible moment. It is also indistinguishable from a team that bought the tool and
+moved the work into private repositories. One account showed fourteen reviews spread across more
+than eight hundred pull requests over fourteen months, which reads as a trial that fizzled and
+would look identical to a successful private rollout.</p>
+
+<h2 id="control">The control row</h2>
+<p>An existing customer with public repositories is carried through every scoring run. Whatever the
+model says, it has to describe that account as one that already solved its review problem. It has
+caught two scoring errors that otherwise looked like perfectly plausible numbers.</p>
+
+
+<div class="onward"><p>The thinking behind these choices, in five rules</p><a class="btn" href="intent-how-it-works.html">Back to the summary &rarr;</a></div>
+<footer><span>Prepared by Eric Hastie</span><span>Built 2026-08-14</span></footer>
+</div>
+</body></html>
