@@ -62,7 +62,7 @@
   tr:last-child td{border-bottom:none}
   td.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:13px;color:var(--ink)}
   .wbar{display:block;height:5px;border-radius:3px;background:var(--accent);opacity:.85;margin-top:5px}
-  .term{font-family:var(--mono);font-size:13px;color:var(--ink);white-space:nowrap}
+  .input{font-family:var(--mono);font-size:13px;color:var(--ink);white-space:nowrap}
   .note{background:var(--sunk);border:1px solid var(--line);border-radius:10px;
     padding:16px 18px;margin:22px 0;font-size:14.5px}
   .note b{color:var(--ink)}
@@ -90,11 +90,11 @@
 <header class="top">
   <div class="eyebrow"><a href="how-it-works.html" style="color:inherit;text-decoration:none">&larr; The five rules</a> &middot; Model A &middot; structural fit</div>
   <h1>How the ICP fit score is calculated</h1>
-  <p class="standfirst">Every term, weight, band and null rule in the model that scores 219 accounts,
+  <p class="standfirst">Every input, weight, band and null rule in the model that scores 219 accounts,
   plus the evidence rules that decide what is allowed to count. Written so the number can be argued
   with on its own evidence.</p>
   <nav class="rail">
-    <a href="#shape">Shape</a><a href="#terms">The six terms</a><a href="#nulls">Missing data</a>
+    <a href="#shape">Shape</a><a href="#terms">The six inputs</a><a href="#nulls">Missing data</a>
     <a href="#tiers">Tiers</a><a href="#excluded">What is excluded</a>
     <a href="#evidence">Evidence rules</a><a href="#coverage">Coverage</a><a href="#icps">ICP A and B</a>
   </nav>
@@ -109,8 +109,8 @@ separate from the Intent score, which changes weekly and drives <strong>sequenci
 activity land on the same number, and those two need opposite plays.</p>
 
 <div class="formula">
-icp = &Sigma; ( weight<sub>term</sub> &times; score<sub>term</sub> ) / 100 &nbsp;&nbsp;<em>weights sum to 100, so the score reads as a percentage of achievable fit</em><br>
-ceiling = &Sigma; ( weight<sub>term</sub> &times; [ score<sub>term</sub> or 100 if unmeasured ] ) / 100<br><br>
+icp = &Sigma; ( weight<sub>input</sub> &times; score<sub>input</sub> ) / 100 &nbsp;&nbsp;<em>weights sum to 100, so the score reads as a percentage of achievable fit</em><br>
+ceiling = &Sigma; ( weight<sub>input</sub> &times; [ score<sub>input</sub> or 100 if unmeasured ] ) / 100<br><br>
 <em>Implementation: <code>tools/icp_score.py</code> &rarr; <code>tools/icp_scores.json</code>. Run with <code>--sensitivity</code>
 to see how far the ranking moves when a weight is wrong.</em>
 </div>
@@ -119,17 +119,17 @@ to see how far the ranking moves when a weight is wrong.</em>
   <div class="stat"><b>219</b><span>accounts scored</span></div>
   <div class="stat"><b>109</b><span>ranked</span></div>
   <div class="stat"><b>110</b><span>unranked, tier U</span></div>
-  <div class="stat"><b>73</b><span>all six terms measured</span></div>
+  <div class="stat"><b>73</b><span>all six inputs measured</span></div>
   <div class="stat"><b>75</b><span>median, ranked only</span></div>
   <div class="stat"><b>0 to 97</b><span>observed range</span></div>
 </div>
 
-<h2 id="terms">The six terms</h2>
+<h2 id="terms">The six inputs</h2>
 <p class="sub">Weights are the one part of the model meant to be edited.</p>
 
 <div class="tbl">
 <table>
-<thead><tr><th>Term</th><th>Weight</th><th>How it scores</th><th>Why it is in the model</th></tr></thead>
+<thead><tr><th>Input</th><th>Weight</th><th>How it scores</th><th>Why it is in the model</th></tr></thead>
 <tbody>
 <tr>
   <td class="term">eng_band</td>
@@ -168,7 +168,7 @@ to see how far the ranking moves when a weight is wrong.</em>
   <td class="term">staff_metro</td>
   <td class="n">8<span class="wbar" style="width:16%"></span></td>
   <td>100 in an event metro with 20%+ of staff, 60 in one below 20%, 30 outside the event metros.</td>
-  <td>The weakest term by design, and it must stay weak. This is <strong>staff</strong> by metro, not
+  <td>The weakest input by design, and it must stay weak. This is <strong>staff</strong> by metro, not
       engineers by metro: the two facets are published separately and left uncrossed, so identical numbers
       can mean opposite things. It exists for event serviceability alone.</td>
 </tr>
@@ -183,7 +183,7 @@ top twenty by at most three accounts.</p>
 
 <div class="tbl">
 <table>
-<thead><tr><th>Term</th><th>Mean rank move at &times;0.5</th><th>Mean rank move at &times;2</th><th>Top-20 churn</th></tr></thead>
+<thead><tr><th>Input</th><th>Mean rank move at &times;0.5</th><th>Mean rank move at &times;2</th><th>Top-20 churn</th></tr></thead>
 <tbody>
 <tr><td class="term">eng_band</td><td class="n">4.2</td><td class="n">2.3</td><td class="n">1</td></tr>
 <tr><td class="term">scm</td><td class="n">5.1</td><td class="n">6.6</td><td class="n">1</td></tr>
@@ -195,18 +195,18 @@ top twenty by at most three accounts.</p>
 </table>
 </div>
 <p>The lever is coverage, not weighting. Arguing about a weight that moves the average account four
-places is cheaper than filling in a term that is blank on half the universe, which is why the last
+places is cheaper than filling in a input that is blank on half the universe, which is why the last
 pass was enrichment.</p>
 
 <h2 id="nulls">Missing data scores zero, and carries a ceiling</h2>
 <p class="sub">A deliberate departure from the rule used on the GitHub signals.</p>
 
-<p>An unmeasured term scores <strong>zero</strong> and flags the row for enrichment, and it stays in the average. The cost is real and worth stating plainly: <strong>a zeroed null sorts exactly
+<p>An unmeasured input scores <strong>zero</strong> and flags the row for enrichment, and it stays in the average. The cost is real and worth stating plainly: <strong>a zeroed null sorts exactly
 like a genuine bad fit</strong>, so "we skipped the check" and "we looked and it is bad" become
 indistinguishable in the ranking.</p>
 
 <p>The ceiling is what keeps that honest. It is the score the account would reach if every unmeasured
-term came back full, so the gap between score and ceiling is the share of the rating that is currently
+input came back full, so the gap between score and ceiling is the share of the rating that is currently
 guesswork.</p>
 
 <div class="cols">
@@ -223,7 +223,7 @@ guesswork.</p>
 <p><strong>Sort on the score. Read the ceiling before concluding anything about a low row.</strong></p>
 
 <h3>Absent and unmeasured are separate readings</h3>
-<p>The two are separated per term, because collapsing them was an early defect in this model. A null
+<p>The two are separated per input, because collapsing them was an early defect in this model. A null
 offshore value <em>inside a staff-location record</em> means the locations were read and the team is
 co-located: that is a measurement, it scores zero legitimately, and it is not enrichment work. No
 location record at all is a gap. The same split applies to compliance: requisition bodies read with no
@@ -234,7 +234,7 @@ needing enrichment on a field that had already been measured.</p>
 <p class="sub">Thresholds come from this model's own distribution, since the two models have different shapes.</p>
 
 <p>A to D are quartiles cut across the ranked population. <strong>Tier U marks a row still being collected.</strong> It is
-what a row gets when fewer than half its terms are measured, and those rows sit outside the quartile cut
+what a row gets when fewer than half its inputs are measured, and those rows sit outside the quartile cut
 entirely so that a coverage gap can stay out of the ranking.</p>
 
 <div class="stats">
@@ -247,7 +247,7 @@ entirely so that a coverage gap can stay out of the ranking.</p>
 
 <div class="note"><b>The 110 unranked accounts are one flat block, not a long tail.</b> They exist only in
 the firmographics universe: a domain and a total headcount and nothing else. No engineering headcount,
-no staff locations, which is 72 of the 100 available points. Every one of them lands at 2 of 6 terms and
+no staff locations, which is 72 of the 100 available points. Every one of them lands at 2 of 6 inputs and
 scores at most 28 against a median ceiling of 100. The unblock is the LinkedIn people-facet pass or Sales
 Navigator, and no amount of site crawling substitutes for it.</div>
 
@@ -291,7 +291,7 @@ otherwise have scored, and each was caught by reading the matches by hand.</p>
   always returns "self", because some earlier sentence contains the word "our".</li>
 
   <li><strong>GDPR is recorded and left out of the score.</strong> Nearly every company serving EU users says it
-  somewhere in a privacy policy. It is boilerplate that reads the same across accounts, so the term stays on the regimes a company earns.</li>
+  somewhere in a privacy policy. It is boilerplate that reads the same across accounts, so the input stays on the regimes a company earns.</li>
 
   <li><strong>A platform named on a site is usually not a statement about where that company's code lives.</strong>
   Four distinct ways this goes wrong, all seen in one pass: an <em>integration list</em> (a company
@@ -323,7 +323,7 @@ most expensive kind of bug in this pipeline.</div>
 
 <div class="tbl">
 <table>
-<thead><tr><th>Term</th><th>Measured</th><th>Of 219</th><th>What the gap is blocked on</th></tr></thead>
+<thead><tr><th>Input</th><th>Measured</th><th>Of 219</th><th>What the gap is blocked on</th></tr></thead>
 <tbody>
 <tr><td class="term">data_sensitivity</td><td class="n m">217</td><td class="n">99%</td><td>Effectively complete. Company trust and security pages, plus requisition bodies.</td></tr>
 <tr><td class="term">scm</td><td class="n m">188</td><td class="n">86%</td><td>Public routes exhausted: own site, docs and developer subdomains, org slugs, GitHub org search. The rest keep their repos private, which is not a negative.</td></tr>
@@ -335,7 +335,7 @@ most expensive kind of bug in this pipeline.</div>
 </table>
 </div>
 
-<p>Four terms out of six are gated behind one collection method. That is the single highest-value thing
+<p>Four inputs out of six are gated behind one collection method. That is the single highest-value thing
 to unblock, with 110 accounts waiting on it.</p>
 
 <h2 id="icps">ICP A and ICP B</h2>
@@ -373,7 +373,7 @@ sub-segment carve-out, and it reads the repeating attribute as <strong>a data-se
 published customers span seven unrelated verticals, and the only attribute that repeats is handling
 regulated or sensitive data.</p>
 
-<p>So the A/B distinction survives in the model as <strong>terms</strong>.
+<p>So the A/B distinction survives in the model as <strong>inputs</strong>.
 Regulated data is the <code>data_sensitivity</code> amplifier. Team shape is <code>eng_band</code>, after
 the engineering-share factor was retired. Nothing in the current scorer knows which ICP an account belongs to.</p>
 
@@ -383,7 +383,7 @@ regulated organization, so the governance amplifier is defined on that basis.
 <br><br><b>2. ICP A has no amplifier of its own.</b> The top of the current ranking is regulated-data
 companies with distributed engineering, which is ICP B. Every account from roughly rank 19 downward bunches
 at the same score on team size and source control alone, with no amplifier firing at all. If ICP A is meant
-to compete for the top of the board, it needs a term that recognizes it: measured velocity, or agent
+to compete for the top of the board, it needs a input that recognizes it: measured velocity, or agent
 adoption, or small-team-high-output. Today the model can see ICP B and is blind to what makes ICP A
 distinctive.</div>
 
