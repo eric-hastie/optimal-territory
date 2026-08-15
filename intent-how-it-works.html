@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>How I think about intent</title>
+<title>What review load looks like from outside</title>
 <style>
 :root{--ground:#eceff5;--surface:#fff;--sunk:#e3e8f2;--head:#dfe6f4;--ink:#0f141b;--body:#2b3542;
  --muted:#5a6676;--line:#ccd4e2;--accent:#1e3f9e;
@@ -62,27 +62,27 @@ footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);color:v
 <header>
   <a class="back" href="index.html">&larr; Territory plan</a>
   <div class="eyebrow">Intent signals</div>
-  <h1>How I think about intent</h1>
-  <p class="lede">Fit says who is worth working. Intent says who is worth calling this week. It is measured rather than inferred, and these five rules are what keep it honest.</p>
+  <h1>What review load looks like from outside</h1>
+  <p class="lede">Fit says which accounts are the right shape. This says which ones are hitting the bottleneck right now, measured in their own code activity rather than inferred.</p>
 </header>
 <article class="p">
   <div class="pn">01</div>
-  <div><h3>Measure the bottleneck, do not infer it from hiring</h3><p>Most prospecting models treat open engineering roles as buying intent: more hiring, more need. That logic inverts here. Your own thesis is that a static team now produces several times the code it used to, so the account with no open roles and a tripled pull request volume is the textbook fit, and the hiring-led model scores it near zero.</p></div>
+  <div><h3>The bottleneck is countable</h3><p>Where a company's public repositories are its product, the exact mechanic your customers describe can be counted: how long a change waits for its first human review, what share of reviewing two people carry, how much merges without any human looking, and how much of the backlog has been open a month or more.</p></div>
 </article><article class="p">
   <div class="pn">02</div>
-  <div><h3>Only where the repository is the product</h3><p>A public GitHub organisation is not the same as public work. Plenty of companies publish SDKs, docs and examples while every line that matters stays private. Signals are only computed where public activity is genuinely the company's engineering, and everywhere else they are recorded as unmeasurable rather than as low.</p></div>
+  <div><h3>Volume against capacity is the direction that matters</h3><p>A step change in pull request volume, a rising share of agent-authored branches and new contributors arriving all point the same way: load climbing against a review capacity that is fixed. Read together they date the moment a team starts to feel it.</p></div>
 </article><article class="p">
   <div class="pn">03</div>
-  <div><h3>A metric is not a signal until it is read in context</h3><p>The share of merges that received no human review is the clearest bottleneck measure there is, and on its own it is ambiguous: a team with no review capacity and a team that already installed a review bot look identical. The same number means opposite things depending on what else is running.</p></div>
+  <div><h3>Context decides what a number means</h3><p>The share of merges with no human review is the sharpest measure available, and it reads in opposite directions depending on whether a review tool is already running. Every metric here is scored against what else is present, which is the difference between a measurement and a signal.</p></div>
 </article><article class="p">
   <div class="pn">04</div>
-  <div><h3>A reviewer already installed is good news</h3><p>The instinct is to treat a competing tool as a closed door. The evidence says the opposite: budget exists, the category is understood, and two of your seven published customers arrived by replacing something that was already there. The conversation starts at comparison instead of explanation.</p></div>
+  <div><h3>A reviewer already installed is the warmest state</h3><p>Two of the seven published customers arrived by replacing a tool that was already there, one of them over false positives. Where a competing reviewer is running, budget exists, the category is understood, and the conversation opens at comparison.</p></div>
 </article><article class="p">
   <div class="pn">05</div>
-  <div><h3>If two explanations fit the data, it is not a signal</h3><p>I built a churn signal, meaning a review bot that went quiet, and then removed it. From outside, a team that abandoned a tool and a team that moved the work into private repositories look exactly the same. A measurement that cannot distinguish those two is not evidence, however good the story sounds.</p></div>
+  <div><h3>Applied only where the code is visible</h3><p>Signals are computed for companies whose engineers genuinely work in public, measured as the share of the engineering team that appears in the public repositories. Everywhere else the result is recorded as unmeasurable, so the list stays a statement about evidence.</p></div>
 </article>
-<div class="kick"><b>What this buys</b><p>A weekly call list built on what companies are actually doing, not on what a database says about them. These are the signals a standard enrichment stack does not carry, because they have to be computed from activity rather than looked up.</p></div>
-<div class="onward"><p>The mechanics: every metric, the composites and the validity gate</p><a class="btn" href="intent-method.html">Read the detailed method &rarr;</a></div>
+<div class="kick"><b>What this is for</b><p>A weekly call list ordered by what companies are actually doing. These signals have to be computed from activity rather than looked up, which is why a standard enrichment stack does not carry them.</p></div>
+<div class="onward"><p>The mechanics: every measurement, the four measures and the validity gate</p><a class="btn" href="intent-method.html">Read the detailed method &rarr;</a></div>
 <footer><span>Prepared by Eric Hastie</span><span>Built 2026-08-14</span></footer>
 </div>
 </body></html>
