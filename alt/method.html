@@ -82,7 +82,7 @@
   plus the evidence rules that decide what is allowed to count. Written so the number can be argued
   with on its own evidence.</p>
   <nav class="rail">
-    <a href="#shape">Shape</a><a href="#terms">The six inputs</a><a href="#nulls">Missing data</a>
+    <a href="#shape">Shape</a><a href="#terms">The five inputs</a><a href="#nulls">Missing data</a>
     <a href="#tiers">Tiers</a><a href="#excluded">What is excluded</a>
     <a href="#evidence">Evidence rules</a><a href="#coverage">Coverage</a><a href="#icps">ICP A and B</a>
   </nav>
@@ -105,14 +105,14 @@ to see how far the ranking moves when a weight is wrong.</em>
 
 <div class="stats">
   <div class="stat"><b>219</b><span>accounts scored</span></div>
-  <div class="stat"><b>109</b><span>ranked</span></div>
-  <div class="stat"><b>110</b><span>unranked, tier U</span></div>
-  <div class="stat"><b>73</b><span>all six inputs measured</span></div>
-  <div class="stat"><b>75</b><span>median, ranked only</span></div>
-  <div class="stat"><b>0 to 97</b><span>observed range</span></div>
+  <div class="stat"><b>163</b><span>ranked</span></div>
+  <div class="stat"><b>56</b><span>unranked, tier U</span></div>
+  <div class="stat"><b>152</b><span>all five inputs measured</span></div>
+  <div class="stat"><b>72</b><span>median, ranked only</span></div>
+  <div class="stat"><b>6 to 100</b><span>observed range</span></div>
 </div>
 
-<h2 id="terms">The six inputs</h2>
+<h2 id="terms">The five inputs</h2>
 <p class="sub">Weights are the one part of the model meant to be edited.</p>
 
 <div class="tbl">
@@ -226,17 +226,17 @@ what a row gets when fewer than half its inputs are measured, and those rows sit
 entirely so that a coverage gap can stay out of the ranking.</p>
 
 <div class="stats">
-  <div class="stat"><b>28</b><span>tier A</span></div>
-  <div class="stat"><b>27</b><span>tier B</span></div>
-  <div class="stat"><b>27</b><span>tier C</span></div>
-  <div class="stat"><b>27</b><span>tier D</span></div>
-  <div class="stat"><b>110</b><span>tier U, unranked</span></div>
+  <div class="stat"><b>41</b><span>tier A</span></div>
+  <div class="stat"><b>41</b><span>tier B</span></div>
+  <div class="stat"><b>41</b><span>tier C</span></div>
+  <div class="stat"><b>40</b><span>tier D</span></div>
+  <div class="stat"><b>56</b><span>tier U, unranked</span></div>
 </div>
 
-<div class="note"><b>The 110 unranked accounts are one flat block, not a long tail.</b> They exist only in
+<div class="note"><b>The 56 unranked accounts are one flat block, not a long tail.</b> They exist only in
 the firmographics universe: a domain and a total headcount and nothing else. No engineering headcount,
-no staff locations, which is 72 of the 100 available points. Every one of them lands at 2 of 6 inputs and
-scores at most 28 against a median ceiling of 100. The unblock is the LinkedIn people-facet pass or Sales
+no staff locations, which is 78 of the 100 available points. Every one of them lands at 2 of 5 inputs and
+scores at most 32 against a median ceiling of 100. The unblock is the LinkedIn people-facet pass or Sales
 Navigator, and no amount of site crawling substitutes for it.</div>
 
 <p>A degeneracy check runs on every build: <code>verify.py</code> flags any field where more than 55% of
@@ -250,7 +250,7 @@ accounts share one value. The most common single score currently covers 27%.</p>
 <thead><tr><th>Left out</th><th>Why</th></tr></thead>
 <tbody>
 <tr><td class="term">ai_native_evidence</td><td>The universe was <em>sourced</em> on it, so 93 of 100 accounts carry it. Scoring a selection criterion is the documented defect that collapsed 54 of 100 accounts onto two values, which flattened the board.</td></tr>
-<tr><td class="term">company HQ</td><td>Wrong on 8 of 109 accounts when checked against where staff actually sit. One company is filed in the Bay Area with 53% of its people in New York, so staff location carries this instead.</td></tr>
+<tr><td class="term">company HQ</td><td>A registered address says where a company is incorporated. One company is filed in the Bay Area with 53% of its people in New York, so staff location carries this instead.</td></tr>
 <tr><td class="term">raw requisition count</td><td>Was a median 88% of every score in the earlier model, which made the board a ranking of company size. Density with a volume damper replaced it, and it lives in the Intent model.</td></tr>
 <tr><td class="term">incumbent AI reviewer</td><td>Behavioral and weekly, so it belongs to Intent, where the switching-evidence table lives with it.</td></tr>
 <tr><td class="term">bottleneck_evidence</td><td>Prose from the sourcing pass, and partly what the accounts were chosen on, so it stays as context.</td></tr>
@@ -314,17 +314,17 @@ most expensive kind of bug in this pipeline.</div>
 <thead><tr><th>Input</th><th>Measured</th><th>Of 219</th><th>What the gap is blocked on</th></tr></thead>
 <tbody>
 <tr><td class="term">data_sensitivity</td><td class="n m">217</td><td class="n">99%</td><td>Effectively complete. Company trust and security pages, plus requisition bodies.</td></tr>
-<tr><td class="term">scm</td><td class="n m">188</td><td class="n">86%</td><td>Public routes exhausted: own site, docs and developer subdomains, org slugs, GitHub org search. The rest keep their repos private, which is not a negative.</td></tr>
-<tr><td class="term">distributed</td><td class="n u">109</td><td class="n">50%</td><td>LinkedIn location facet. Needs the people-facet pass.</td></tr>
-<tr><td class="term">eng_band</td><td class="n u">103</td><td class="n">47%</td><td>LinkedIn Engineering function facet or Sales Navigator. Never estimated.</td></tr>
+<tr><td class="term">scm</td><td class="n m">219</td><td class="n">100%</td><td>Public routes exhausted: own site, docs and developer subdomains, org slugs, GitHub org search. The rest keep their repos private, which is not a negative.</td></tr>
+<tr><td class="term">distributed</td><td class="n u">163</td><td class="n">74%</td><td>LinkedIn location facet. Needs the people-facet pass.</td></tr>
+<tr><td class="term">eng_band</td><td class="n u">153</td><td class="n">70%</td><td>LinkedIn Engineering function facet or Sales Navigator. Never estimated.</td></tr>
 
-<tr><td class="term">staff_metro</td><td class="n u">99</td><td class="n">45%</td><td>LinkedIn location facet, same pass.</td></tr>
+<tr><td class="term">staff_metro</td><td class="n u">163</td><td class="n">74%</td><td>LinkedIn location facet, same pass.</td></tr>
 </tbody>
 </table>
 </div>
 
-<p>Four inputs out of six are gated behind one collection method. That is the single highest-value thing
-to unblock, with 110 accounts waiting on it.</p>
+<p>Three inputs out of five are gated behind one collection method. That is the single highest-value thing
+to unblock, with 56 accounts waiting on it.</p>
 
 <h2 id="icps">ICP A and ICP B</h2>
 <p class="sub">Where the split came from, what happened to it, and what is still unresolved.</p>

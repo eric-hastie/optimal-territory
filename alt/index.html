@@ -29,7 +29,12 @@
   .three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   @media(max-width:860px){.two,.three{grid-template-columns:1fr}h1{font-size:33px}}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;
-    padding:24px;display:flex;flex-direction:column}
+    padding:24px;display:flex;flex-direction:column;border-top:3px solid transparent}
+  /* These cards sit in a stretched grid. Without the next two rules, a card whose
+     text runs short leaves its footer floating mid-box, and the one card with no
+     coloured top border sits 2px higher than its neighbours. */
+  .list-card .link{margin-top:auto}
+  .wedge{min-height:2.6em}
   .card.a{border-top:3px solid var(--a)}
   .card.b{border-top:3px solid var(--b)}
   .tag{display:inline-flex;align-items:center;gap:7px;font:600 11px var(--mono);
@@ -129,7 +134,7 @@
         <cite>Git Sh*t Done LIVE, Ep 3</cite></blockquote>
       <div class="metrics">
         <div class="metric"><span>Accounts</span><b>25</b></div>
-        <div class="metric"><span>Staff</span><b>1k to 6k</b></div>
+        <div class="metric"><span>Employees</span><b>300 to 9k</b></div>
         <div class="metric"><span>First gate</span><b>InfoSec</b></div>
       </div>
     </article>
@@ -161,17 +166,17 @@
   <h2>The lists</h2>
   <p class="h2sub">Three lists, three different approaches to prospecting</p>
   <p style="max-width:68ch">Two lists rank <em>fit</em>, each on the model built for its own segment.
-  The third ranks <em>evidence</em>, and finds accounts by measuring the bottleneck directly in
-  public code activity.</p>
+  The third ranks <em>measured signal</em>, and
+    finds accounts by measuring the bottleneck directly in public code activity.</p>
 
   <div class="three">
     <article class="card list-card a">
       <span class="tag a">List 1</span>
       <h3>ICP A: velocity</h3>
       <div class="count">25 accounts</div>
-      <p>Sourced as structural twins of existing customers: the same buyer, the same class of data,
-      the same shape of team. Every row carries the customer it resembles and the evidence for the
-      match.</p>
+      <p>Every account is confirmed to be building or shipping with a named coding agent,
+      evidenced in its own requisitions or on its own site. Where an account is also a structural
+      twin of a published customer, that customer is named beside it with the match.</p>
       <p>Ranked on team shape, engineering density and shipping cadence, so what decides it is
       how much a team ships against how many people are available to review it.</p>
       <a class="link" href="icp-a.html">View the 25 accounts &rarr;</a>
