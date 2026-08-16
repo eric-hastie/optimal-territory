@@ -76,7 +76,7 @@
 
 <div class="page">
 <header class="top">
-  <div class="eyebrow"><a href="how-it-works.html" style="color:inherit;text-decoration:none">&larr; The five rules</a> &middot; Model A &middot; structural fit</div>
+  <div class="eyebrow"><a href="how-it-works.html" style="color:inherit;text-decoration:none">&larr; How both lists are built</a> &middot; Model A &middot; structural fit</div>
   <h1>How the ICP fit score is calculated</h1>
   <p class="standfirst">Every input, weight, band and null rule in the model that scores 219 accounts,
   plus the evidence rules that decide what is allowed to count. Written so the number can be argued
@@ -104,12 +104,14 @@ to see how far the ranking moves when a weight is wrong.</em>
 </div>
 
 <div class="stats">
+<!--GEN:stats-->
   <div class="stat"><b>219</b><span>accounts scored</span></div>
   <div class="stat"><b>163</b><span>ranked</span></div>
   <div class="stat"><b>56</b><span>unranked, tier U</span></div>
   <div class="stat"><b>152</b><span>all five inputs measured</span></div>
   <div class="stat"><b>72</b><span>median, ranked only</span></div>
-  <div class="stat"><b>6 to 100</b><span>observed range</span></div>
+  <div class="stat"><b>0 to 100</b><span>observed range</span></div>
+<!--/GEN:stats-->
 </div>
 
 <h2 id="terms">The five inputs</h2>
@@ -119,72 +121,64 @@ to see how far the ranking moves when a weight is wrong.</em>
 <table>
 <thead><tr><th>Input</th><th>Weight</th><th>How it scores</th><th>Why it is in the model</th></tr></thead>
 <tbody>
+<!--GEN:weights-->
 <tr>
   <td class="term">eng_band</td>
   <td class="n">50<span class="wbar" style="width:100%"></span></td>
-  <td>100 at 5 to 50 engineers. 35 under 5, 15 under 2. Decays to 55 at 51 to 100 and 35 above,
-      tagging the row <span class="flag">via team</span> so it stays on the board.</td>
-  <td>The buying unit is a team of 5 to 50 with one owner. <strong>The floor is about ability to spend,
-      not about who has the pain</strong>: a three-engineer team has the review bottleneck in its
-      purest form, and one of the published case-study customers is a reference at roughly that size.</td>
-</tr>
-<tr>
-  <td class="term">scm</td>
-  <td class="n">7<span class="wbar" style="width:14%"></span></td>
-  <td>Supported platform confirmed. 100 for a verified GitHub or GitLab org, 75 for a mention in their own requisitions.</td>
-  <td>No source control, no product. A verified org outranks a mention because the org is a checkable
-      fact and the mention is someone's job ad. <strong>A private org is not a negative</strong>: most
-      companies keep product repos closed, which says nothing about fit.</td>
-</tr>
-
-<tr>
-  <td class="term">data_sensitivity</td>
-  <td class="n">18<span class="wbar" style="width:36%"></span></td>
-  <td>100 when a regime is named and self-attributed. Weight raised from 10 to 18: it repeats across four of the seven published customers.</td>
-  <td>An amplifier and no part of selection. Repeats across four of the seven published case studies, and it is
-      a property of the data itself. An <em>in-progress</em> program is labeled
-      and scored, because an active audit is a dated live trigger.</td>
+  <td>100 at 5 to 50 engineers. 35 under 5, 15 under 2. Decays to 55 at 51 to 100 and 35 above, tagging the row <span class="flag">via team</span> so it stays on the board.</td>
+  <td>The buying unit is a team of 5 to 50 with one owner. <strong>The floor is about ability to spend, not about who has the pain</strong>: a three-engineer team has the review bottleneck in its purest form, and one of the published case-study customers is a reference at roughly that size.</td>
 </tr>
 <tr>
   <td class="term">distributed</td>
-  <td class="n">9<span class="wbar" style="width:18%"></span></td>
+  <td class="n">22<span class="wbar" style="width:44%"></span></td>
   <td>100 with an offshore or cross-timezone staff cluster. 0 when locations were read and the team is co-located.</td>
-  <td>Amplifier. The named root cause in one reference customer: juniors blocked waiting for the only
-      reviewer to wake up in another timezone.</td>
+  <td>Amplifier, and the second heaviest input. The named root cause in one reference customer: juniors blocked waiting for the only reviewer to wake up in another timezone.</td>
+</tr>
+<tr>
+  <td class="term">data_sensitivity</td>
+  <td class="n">16<span class="wbar" style="width:32%"></span></td>
+  <td>100 when a regime is named and self-attributed.</td>
+  <td>An amplifier and no part of selection. Repeats across four of the seven published case studies, and it is a property of the data itself. An <em>in-progress</em> program is labeled and scored, because an active audit is a dated live trigger.</td>
 </tr>
 <tr>
   <td class="term">staff_metro</td>
-  <td class="n">8<span class="wbar" style="width:16%"></span></td>
+  <td class="n">6<span class="wbar" style="width:12%"></span></td>
   <td>100 in an event metro with 20%+ of staff, 60 in one below 20%, 30 outside the event metros.</td>
-  <td>The weakest input by design, and it must stay weak. This is <strong>staff</strong> by metro, not
-      engineers by metro: the two facets are published separately and left uncrossed, so identical numbers
-      can mean opposite things. It exists for event serviceability alone.</td>
+  <td>The weakest input by design, and it must stay weak. This is <strong>staff</strong> by metro, not engineers by metro: the two facets are published separately and left uncrossed, so identical numbers can mean opposite things. It exists for event serviceability alone.</td>
 </tr>
+<tr>
+  <td class="term">scm</td>
+  <td class="n">6<span class="wbar" style="width:12%"></span></td>
+  <td>Supported platform confirmed. 100 for a verified GitHub or GitLab org, 75 for a mention in their own requisitions.</td>
+  <td>No source control, no product. A verified org outranks a mention because the org is a checkable fact and the mention is someone's job ad. <strong>A private org is not a negative</strong>: most companies keep product repos closed, which says nothing about fit.</td>
+</tr>
+<!--/GEN:weights-->
 </tbody>
 </table>
 </div>
 
 <h3>How much do the weights actually matter</h3>
-<p>Less than you would expect, which is the most useful thing the model has said so far. Halving or
-doubling any single weight moves the average account between one and seven places, and changes the
-top twenty by at most three accounts.</p>
+<p>Two inputs decide this board and three barely touch it. Halving or doubling <code>staff_metro</code>
+or <code>scm</code> leaves the top twenty exactly as it was. Doubling <code>eng_band</code> rewrites
+most of it. This table is regenerated from the model on every build, so the figures are the live ones.</p>
 
 <div class="tbl">
 <table>
 <thead><tr><th>Input</th><th>Mean rank move at &times;0.5</th><th>Mean rank move at &times;2</th><th>Top-20 churn</th></tr></thead>
 <tbody>
-<tr><td class="term">eng_band</td><td class="n">4.2</td><td class="n">2.3</td><td class="n">1</td></tr>
-<tr><td class="term">scm</td><td class="n">5.1</td><td class="n">6.6</td><td class="n">1</td></tr>
-
-<tr><td class="term">data_sensitivity</td><td class="n">3.4</td><td class="n">6.5</td><td class="n">2</td></tr>
-<tr><td class="term">distributed</td><td class="n">1.2</td><td class="n">2.8</td><td class="n">3</td></tr>
-<tr><td class="term">staff_metro</td><td class="n">1.2</td><td class="n">3.6</td><td class="n">2</td></tr>
+<!--GEN:sensitivity-->
+<tr><td class="term">eng_band</td><td class="n">8.6</td><td class="n">22.4</td><td class="n">19</td></tr>
+<tr><td class="term">distributed</td><td class="n">8.1</td><td class="n">9.4</td><td class="n">15</td></tr>
+<tr><td class="term">data_sensitivity</td><td class="n">7.2</td><td class="n">11.7</td><td class="n">9</td></tr>
+<tr><td class="term">staff_metro</td><td class="n">1.4</td><td class="n">2.3</td><td class="n">0</td></tr>
+<tr><td class="term">scm</td><td class="n">1.3</td><td class="n">2.9</td><td class="n">0</td></tr>
+<!--/GEN:sensitivity-->
 </tbody>
 </table>
 </div>
-<p>The lever is coverage, not weighting. Arguing about a weight that moves the average account four
-places is cheaper than filling in an input that is blank on half the universe, which is why the last
-pass was enrichment.</p>
+<p>Coverage outranks weighting on the three light inputs, where an argument about a weight changes
+nothing a reader would see. On <code>eng_band</code> the weight and the gap matter about equally, and
+one collection pass moves both: 66 accounts carry no engineering headcount at all.</p>
 
 <h2 id="nulls">Missing data scores zero, and carries a ceiling</h2>
 <p class="sub">A deliberate departure from the rule used on the GitHub signals.</p>
@@ -235,12 +229,12 @@ entirely so that a coverage gap can stay out of the ranking.</p>
 
 <div class="note"><b>The 56 unranked accounts are one flat block, not a long tail.</b> They exist only in
 the firmographics universe: a domain and a total headcount and nothing else. No engineering headcount,
-no staff locations, which is 78 of the 100 available points. Every one of them lands at 2 of 5 inputs and
-scores at most 32 against a median ceiling of 100. The unblock is the LinkedIn people-facet pass or Sales
-Navigator, and no amount of site crawling substitutes for it.</div>
+no staff locations, which is 78 of the 100 available points. 55 of them land at 2 of 5 inputs and one at
+1, and they score at most 32 against a median ceiling of 84. The unblock is the LinkedIn people-facet pass
+or Sales Navigator, and no amount of site crawling substitutes for it.</div>
 
 <p>A degeneracy check runs on every build: <code>verify.py</code> flags any field where more than 55% of
-accounts share one value. The most common single score currently covers 27%.</p>
+accounts share one value. The most common single score currently covers 16%.</p>
 
 <h2 id="excluded">What is deliberately not in the model</h2>
 <p class="sub">Each of these is a decision with a reason behind it.</p>
@@ -313,12 +307,13 @@ most expensive kind of bug in this pipeline.</div>
 <table>
 <thead><tr><th>Input</th><th>Measured</th><th>Of 219</th><th>What the gap is blocked on</th></tr></thead>
 <tbody>
-<tr><td class="term">data_sensitivity</td><td class="n m">217</td><td class="n">99%</td><td>Effectively complete. Company trust and security pages, plus requisition bodies.</td></tr>
-<tr><td class="term">scm</td><td class="n m">219</td><td class="n">100%</td><td>Public routes exhausted: own site, docs and developer subdomains, org slugs, GitHub org search. The rest keep their repos private, which is not a negative.</td></tr>
+<!--GEN:coverage-->
+<tr><td class="term">scm</td><td class="n">219</td><td class="n">100%</td><td>Public routes exhausted: own site, docs and developer subdomains, org slugs, GitHub org search. The rest keep their repos private, which is not a negative.</td></tr>
+<tr><td class="term">data_sensitivity</td><td class="n u">217</td><td class="n">99%</td><td>Effectively complete. Company trust and security pages, plus requisition bodies.</td></tr>
 <tr><td class="term">distributed</td><td class="n u">163</td><td class="n">74%</td><td>LinkedIn location facet. Needs the people-facet pass.</td></tr>
-<tr><td class="term">eng_band</td><td class="n u">153</td><td class="n">70%</td><td>LinkedIn Engineering function facet or Sales Navigator. Never estimated.</td></tr>
-
 <tr><td class="term">staff_metro</td><td class="n u">163</td><td class="n">74%</td><td>LinkedIn location facet, same pass.</td></tr>
+<tr><td class="term">eng_band</td><td class="n u">153</td><td class="n">70%</td><td>LinkedIn Engineering function facet or Sales Navigator. Never estimated.</td></tr>
+<!--/GEN:coverage-->
 </tbody>
 </table>
 </div>
@@ -352,27 +347,27 @@ to two populations. It is their own words, not an inference:</p>
     </ul></div>
 </div>
 
-<h3>What actually happened to the split</h3>
-<p>The original plan was two boards of 25, each with its own scoring model. <strong>That is not what was
-built, and the plan was superseded.</strong> The universe was assembled as 115
-accounts segmented by <em>metro</em> instead, because the dinner series is the pipeline engine and each
-metro view doubles as a guest list. The living ICP definition is now a single ICP with a Bay Area
-sub-segment carve-out, and it reads the repeating attribute as <strong>a data-sensitivity pattern</strong>: seven
-published customers span seven unrelated verticals, and the only attribute that repeats is handling
-regulated or sensitive data.</p>
+<h3>How the split reaches the model</h3>
+<p>Each segment has its own model. Model A is the one on this page: it scores the whole 219-account
+universe on structure and knows nothing about segments, and the velocity list is its ranking restricted
+to accounts that pass the agent filter. Model B is a separate scorer with its own five inputs, weighted
+for governance, over a 104-account regulated universe. The two share one input, <code>data_sensitivity</code>,
+weighted 16 in Model A and 40 in Model B.</p>
 
-<p>So the A/B distinction survives in the model as <strong>inputs</strong>.
-Regulated data is the <code>data_sensitivity</code> amplifier. Team shape is <code>eng_band</code>, after
-the engineering-share factor was retired. Nothing in the current scorer knows which ICP an account belongs to.</p>
+<p>Model A carries the distinction as <strong>inputs</strong>. Regulated data is
+the <code>data_sensitivity</code> amplifier and team shape is <code>eng_band</code>, which is also why
+vertical is absent: seven published customers span seven unrelated verticals, and the only attribute that
+repeats across them is handling regulated or sensitive data.</p>
 
 <div class="note"><b>Two things to resolve, and both change the model.</b>
 <br><br><b>1. Regulated or unregulated.</b> Every piece of evidence in the corpus says <em>regulated</em>, and every named example is a
 regulated organization, so the governance amplifier is defined on that basis.
-<br><br><b>2. ICP A has no amplifier of its own.</b> The top of the current ranking is regulated-data
-companies with distributed engineering, which is ICP B. Every account from roughly rank 19 downward bunches
-at the same score on team size and source control alone, with no amplifier firing at all. If ICP A is meant
-to compete for the top of the board, it needs an input that recognizes it: measured velocity, or agent
-adoption, or small-team-high-output. Today the model can see ICP B and is blind to what makes ICP A
+<br><br><b>2. ICP A has no amplifier of its own.</b> The top of Model A's ranking is regulated-data
+companies with distributed engineering, which is the governance shape. On the published velocity list
+13 of the 25 rows score exactly 78, on team size and source control alone with no amplifier firing, so the
+bottom half of that list carries no meaningful order. For the velocity segment to rank on its own terms it
+needs an input that recognizes it: measured velocity, agent adoption, or small team against high output.
+Today the model can see ICP B and is blind to what makes ICP A
 distinctive.</div>
 
 <footer>
