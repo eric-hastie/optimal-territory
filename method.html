@@ -361,7 +361,7 @@ to two populations. It is their own words, not an inference:</p>
 
 <h3>How the split reaches the model</h3>
 <p>Each segment has its own model. Model A is the one on this page: it scores the whole 219-account
-universe on structure and knows nothing about segments, and the velocity list is its ranking restricted
+universe on structure and knows nothing about segments, and the ICP A list is its ranking restricted
 to accounts that pass the agent filter. Model B is a separate scorer with its own five inputs, weighted
 for governance, over a 104-account regulated universe. The two share one input, <code>data_sensitivity</code>,
 weighted 16 in Model A and 40 in Model B.</p>
@@ -375,9 +375,9 @@ repeats across them is handling regulated or sensitive data.</p>
 <br><br><b>1. Regulated or unregulated.</b> Every piece of evidence in the corpus says <em>regulated</em>, and every named example is a
 regulated organization, so the governance amplifier is defined on that basis.
 <br><br><b>2. ICP A has no amplifier of its own.</b> The top of Model A's ranking is regulated-data
-companies with distributed engineering, which is the governance shape. On the published velocity list
+companies with distributed engineering, which is the ICP B shape. On the published ICP A list
 13 of the 25 rows score exactly 78, on team size and source control alone with no amplifier firing, so the
-bottom half of that list carries no meaningful order. For the velocity segment to rank on its own terms it
+bottom half of that list carries no meaningful order. For ICP A to rank on its own terms it
 needs an input that recognizes it: measured velocity, agent adoption, or small team against high output.
 Today the model can see ICP B and is blind to what makes ICP A
 distinctive.</div>
