@@ -6,8 +6,8 @@ and a third list built from publicly measurable review-bottleneck signals.
 Live site: https://eric-hastie.github.io/optimal-territory/
 
 - `index.html` the plan: both ICPs, the product each leads with, and the three lists
-- `icp-a.html` 25 velocity accounts
-- `icp-b.html` 25 governance accounts
+- `icp-a.html` 25 agent-native teams
+- `icp-b.html` 25 regulated organizations
 - `intent.html` 25 accounts with a measurable review bottleneck
 - `method.html` how the scores are built, what they refuse to score, and current coverage
 
