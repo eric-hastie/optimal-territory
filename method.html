@@ -149,19 +149,19 @@ to see how far the ranking moves when a weight is wrong.</em>
   <td class="term">distributed</td>
   <td class="n">22<span class="wbar" style="width:44%"></span></td>
   <td>100 with an offshore or cross-timezone staff cluster. 0 when locations were read and the team is co-located.</td>
-  <td>Amplifier, and the second heaviest input. The named root cause in one reference customer: juniors blocked waiting for the only reviewer to wake up in another timezone.</td>
+  <td>It raises a score and never selects an account, and it is the second heaviest input. The named root cause in one reference customer: juniors blocked waiting for the only reviewer to wake up in another timezone.</td>
 </tr>
 <tr>
   <td class="term">data_sensitivity</td>
   <td class="n">16<span class="wbar" style="width:32%"></span></td>
   <td>100 when a regime is named and self-attributed.</td>
-  <td>An amplifier and no part of selection. Repeats across four of the seven published case studies, and it is a property of the data itself. An <em>in-progress</em> program is labeled and scored, because an active audit is a dated live trigger.</td>
+  <td>It raises a score and never selects an account. Repeats across four of the seven published case studies, and it is a property of the data itself. An <em>in-progress</em> program is labeled and scored, because an active audit is a dated live trigger.</td>
 </tr>
 <tr>
   <td class="term">staff_metro</td>
   <td class="n">6<span class="wbar" style="width:12%"></span></td>
   <td>100 in an event metro with 20%+ of staff, 60 in one below 20%, 30 outside the event metros.</td>
-  <td>The weakest input by design, and it must stay weak. This is <strong>staff</strong> by metro, not engineers by metro: the two facets are published separately and left uncrossed, so identical numbers can mean opposite things. It exists for event serviceability alone.</td>
+  <td>The weakest input by design, and it must stay weak. This counts <strong>staff</strong> by metro. LinkedIn publishes engineers by metro separately, and the two are never combined, so identical numbers can mean opposite things. It exists for event serviceability alone.</td>
 </tr>
 <tr>
   <td class="term">scm</td>
@@ -232,8 +232,8 @@ needing enrichment on a field that had already been measured.</p>
 <h2 id="tiers">Tiers, and the rows still being collected</h2>
 <p class="sub">Thresholds come from this model's own distribution, since the two models have different shapes.</p>
 
-<p>A to D are quartiles cut across the ranked population. <strong>Tier U marks a row still being collected.</strong> It is
-what a row gets when fewer than half its inputs are measured, and those rows sit outside the quartile cut
+<p>A to D split the ranked accounts into four equal groups. <strong>Tier U marks a row still being collected.</strong> It is
+what a row gets when fewer than half its inputs are measured, and those rows sit outside the four groups
 entirely so that a coverage gap can stay out of the ranking.</p>
 
 <div class="stats">
@@ -249,8 +249,8 @@ no staff locations, which is 78 of the 100 available points. 55 of them land at 
 1, and they score at most 32 against a median ceiling of 84. The unblock is the LinkedIn people-facet pass
 or Sales Navigator, and no amount of site crawling substitutes for it.</div>
 
-<p>A degeneracy check runs on every build: <code>verify.py</code> flags any field where more than 55% of
-accounts share one value. The most common single score currently covers 16%.</p>
+<p><code>verify.py</code> flags any input where more than 55% of accounts share one value, because an
+input that says the same thing about everyone ranks nothing. The most common single score currently covers 16%.</p>
 
 <h2 id="excluded">What is deliberately not in the model</h2>
 <p class="sub">Each of these is a decision with a reason behind it.</p>
@@ -261,7 +261,7 @@ accounts share one value. The most common single score currently covers 16%.</p>
 <tbody>
 <tr><td class="term">ai_native_evidence</td><td>The universe was <em>sourced</em> on it, so 93 of 100 accounts carry it. Scoring a selection criterion is the documented defect that collapsed 54 of 100 accounts onto two values, which flattened the board.</td></tr>
 <tr><td class="term">company HQ</td><td>A registered address says where a company is incorporated. One company is filed in the Bay Area with 53% of its people in New York, so staff location carries this instead.</td></tr>
-<tr><td class="term">raw requisition count</td><td>Was a median 88% of every score in the earlier model, which made the board a ranking of company size. Density with a volume damper replaced it, and it lives in the Intent model.</td></tr>
+<tr><td class="term">raw requisition count</td><td>Was a median 88% of every score in the earlier model, which made the board a ranking of company size. Requisitions per engineer replaced it, with large companies pulled back so headcount alone cannot win, and it lives in the Intent model.</td></tr>
 <tr><td class="term">incumbent AI reviewer</td><td>Behavioral and weekly, so it belongs to Intent, where the switching-evidence table lives with it.</td></tr>
 <tr><td class="term">bottleneck_evidence</td><td>Prose from the sourcing pass, and partly what the accounts were chosen on, so it stays as context.</td></tr>
 <tr><td class="term">funding</td><td>Low weight by decision: 54 of 85 values are single-regex search hits, so it stays context until confirmed.</td></tr>
@@ -302,11 +302,7 @@ otherwise have scored, and each was caught by reading the matches by hand.</p>
   stated website resolves to the account's own domain. A GitHub link on a docs page is a lead, not a
   finding: one company's docs link a third party's org through an analytics dependency.</li>
 
-  <li><strong>Engineering headcount is measured or left empty.</strong> The one permitted derivation is a <em>bound</em>: when
-  engineering is absent from LinkedIn's top-five functions it must sit below the fifth-largest count, so
-  that count becomes a ceiling. Those rows are flagged <span class="flag">bounded</span>, and the band is
-  left unmeasured: an upper bound has no floor, so it places the account nowhere in the
-  5 to 50 range. The band's weight is held in the ceiling until the figure is collected.</li>
+  <li><strong>Engineering headcount is measured or left empty.</strong> The band's weight is held in the ceiling until the figure is collected.</li>
 </ul>
 
 <div class="note"><b>A crawler defect worth remembering.</b> <code>robots.txt</code> was fetched without an
@@ -368,17 +364,17 @@ to accounts that pass the agent filter. Model B is a separate scorer with its ow
 for governance, over a 104-account regulated universe. The two share one input, <code>data_sensitivity</code>,
 weighted 16 in Model A and 40 in Model B.</p>
 
-<p>Model A carries the distinction as <strong>inputs</strong>. Regulated data is
-the <code>data_sensitivity</code> amplifier and team shape is <code>eng_band</code>, which is also why
+<p>Model A carries the distinction as <strong>inputs</strong>. Regulated data scores
+through <code>data_sensitivity</code> and team shape through <code>eng_band</code>, which is also why
 vertical is absent: seven published customers span seven unrelated verticals, and the only attribute that
 repeats across them is handling regulated or sensitive data.</p>
 
 <div class="note"><b>Two things to resolve, and both change the model.</b>
 <br><br><b>1. Regulated or unregulated.</b> Every piece of evidence in the corpus says <em>regulated</em>, and every named example is a
-regulated organization, so the governance amplifier is defined on that basis.
-<br><br><b>2. ICP A has no amplifier of its own.</b> The top of Model A's ranking is regulated-data
+regulated organization, so the governance input is defined on that basis.
+<br><br><b>2. ICP A has nothing of its own that lifts it.</b> The top of Model A's ranking is regulated-data
 companies with distributed engineering, which is the ICP B shape. On the published ICP A list
-13 of the 25 rows score exactly 78, on team size and source control alone with no amplifier firing, so the
+13 of the 25 rows score exactly 78, on team size and source control alone with nothing else scoring, so the
 bottom half of that list carries no meaningful order. For ICP A to rank on its own terms it
 needs an input that recognizes it: measured velocity, agent adoption, or small team against high output.
 Today the model can see ICP B and is blind to what makes ICP A
